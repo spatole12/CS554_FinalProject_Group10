@@ -1,0 +1,118 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class Restaurant extends Component {
+   constructor(props) {
+      super(props);
+      this.API_KEY = "ou624q0okuv_MSkjkb0-gXv-o9K3gi-e75adIovbe0mf86dAoqEd0QUdEgQVhgYX9roDNKBiqGJT3n04TTvbZ81-3WAjWbBqg0naS7S09qBfq6HZGFwlb3L790rUXHYx";
+      this.state = {
+         data: undefined,
+         loading: false,
+         error: undefined
+      };
+   }
+
+   componentWillMount() {
+      this.getRestaurant();
+   }
+
+   async getRestaurant() {    
+      this.setState({
+         loading: true
+      });
+      try {
+         const response = await axios.get(
+            `${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.match.params.id}`, {headers: {
+              Authorization: `Bearer ${this.API_KEY}`
+          }});
+         this.setState({
+            data: response.data,
+            loading: false
+         });
+      } catch (e) {
+        this.setState({
+           error: "404 - Restaurant Not Found!",
+           loading: false
+        });
+      }
+   }
+
+   render() {
+      let body = null;
+      
+      if (this.state.loading) {
+         body = (
+            <div>
+               <h1>Restaurant</h1>
+               <br />
+               Loading...
+            </div>
+         );
+      } else if (this.state.error) {
+         body = (
+            <div>
+               <h1>{this.state.error}</h1>
+            </div>
+         );
+      } else {
+         let img = <img alt="Restaurant" src={this.state.data.image_url} />;
+
+         var categories = [],
+        category;
+
+        
+    for (var i = 0; i < this.state.data.categories.length ; i++) {
+      if (i === this.state.data.categories.length - 1) {
+        category = <span>{this.state.data.categories[i].title}</span>;
+      } else {
+        category = <span>{this.state.data.categories[i].title}<span>, </span></span>;
+      }
+      categories.push(category);
+      
+    }
+
+    var displayAddress = [],
+        address;
+
+    for ( i = 0; i < this.state.data.location.display_address.length; i++) {
+      if (i === this.state.data.location.display_address.length - 1) {
+        address = <span>{this.state.data.location.display_address[i]}</span>;
+      } else {
+        address = <span>{this.state.data.location.display_address[i]}<span>, </span></span>;
+      }
+      displayAddress.push(address);
+    }
+         
+         body = (
+            <div className="black-color">
+               <h2 className="cap-first-letter"> 
+                  {this.state.data && this.state.data.name}
+               </h2>
+               {img} 
+               <br />
+               <br />
+               <p>
+                  Rating: {this.state.data && this.state.data.rating} 
+                  <br />
+                  Price: {this.state.data && this.state.data.price} 
+                  <br />
+                  Contact Number: {this.state.data && this.state.data.display_phone} 
+                  <br /> 
+               </p>
+
+               <b>Categories</b>:
+               
+               <p>{categories}</p>
+               
+               <b>Address</b>:
+               <p>{displayAddress}</p>
+
+               
+            </div>
+         );
+      }
+      return body;
+   }
+}
+
+export default Restaurant;

@@ -1,0 +1,201 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #178577;
+  height: 200px;
+  padding: 20px;
+  color: #222;
+}
+
+.App-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+cite {
+  font-weight: bold;
+}
+table {
+  align-content: center;
+  margin: auto;
+}
+td {
+  padding: 10px;
+}
+
+.App-intro {
+  font-size: large;
+}
+.cap-first-letter:first-letter {
+  text-transform: capitalize;
+}
+.col-sm-6,
+col-md-4 {
+  border: 1px;
+}
+@keyframes App-logo-spin {
+  from {
+     transform: rotate(0deg);
+  }
+  to {
+     transform: rotate(360deg);
+  }
+}
+
+.showlink {
+  padding: 0.2rem 0.4rem;
+  margin: 20px;
+  background-color: white;
+  border-radius: 3px;
+  color: #178577;
+  text-decoration: none !important;
+}
+
+.showlink:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+body {
+  padding: 0;
+  
+  color: white;
+}
+
+.main-container, .navbar{
+  background: rgba(0,0,0,0.5)
+}
+
+h1 a, h1 a:link, h1 a:hover, h1 a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.container-fluid {
+  min-height: calc(100vh - 60px);
+}
+
+.modal {
+  color: black;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-family: 'Pacifico', cursive;
+}
+
+#heading {
+
+  font-family: 'Pacifico', cursive;
+  color: white;
+  font-size: 7em;
+  margin-top: 10vh;
+  display: none;
+
+}
+
+#search-btn-group {
+
+  display: none;
+
+}
+
+#quick-search h3 {
+  margin-bottom: 0;
+}
+
+#quick-search h4 {
+  font-weight: 600;
+}
+
+#quick-search .col-md-2 {
+  display: none;
+  background: rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  width: 15.3%;
+  margin: 15px 15px 0 0;
+}
+
+#quick-search .col-md-2:nth-child(2) {
+  margin-left: 9px;
+}
+
+#quick-search .col-md-2:nth-child(7) {
+  margin-right: 9px;
+}
+
+#quick-search .col-md-2:hover {
+  background: white;
+  color: black;
+  text-decoration: none;
+}
+
+
+.container {
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.card {
+  width: 18rem; 
+  padding: 10px; 
+  margin: 10px; 
+  height: 27rem;
+  color: black;
+}
+
+.black-color {
+  color: black;
+}
+
+.card-title {
+  font-size: 1.2em;
+}
+
+.modal-title {
+  font-size: 1.2em;
+}
+
+.card-img-top {
+  height:60%;
+}
+
+.card-body {
+  height:40%; 
+  overflow:auto;
+}
+
+.btn-primary {
+  background-color: #0072ee;
+  border-color: #0072ee;
+}
+
+.header {
+  font-family: Times, serif;
+  text-align: center;
+  padding-top: 10px;
+}
