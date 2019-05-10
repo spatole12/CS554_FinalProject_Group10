@@ -6,9 +6,9 @@ import Restaurant from './Restaurant';
 class RestaurantContainer extends Component {
     render() {
         return (
-            <div>
+            <div>{this.props.isAuthed}
                 <Switch>
-                    <Route path="/restaurant/category/:category/:page" exact component={RestaurantList} />
+                    <Route path="/restaurant/list/:page" exact component={RestaurantList} />
                     <Route path="/restaurant/:id" exact component={Restaurant} />
                 </Switch>
             </div>

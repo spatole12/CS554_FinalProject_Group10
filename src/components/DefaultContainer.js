@@ -15,77 +15,78 @@ class DefaultContainer extends Component {
     this.setState({
       loading: true
     });
+    console.log(this.props)
   }
 
-componentWillUnmount(){
+  componentWillUnmount() {
     document.body.style.background = null;
-}
+  }
 
   render() {
     let body = null;
 
     if (this.state.loading) {
       body = (
-        <div>
-     
-
-<div className="container-fluid text-center main-container">
-
-<h1>Food Explore</h1>
+        <div>{this.props.isAuthed}
 
 
-<form className="form-horizontal row" >
+          <div className="container-fluid text-center main-container">
 
-    <div className="col-md-offset-3 col-md-6">
+            <h1>Food Explore</h1>
 
-        <div className="input-group input-group-lg" id="search-input-group">
 
-            <input required type="text" className="form-control"
-                   placeholder="Search for restaurant, cuisine or a dish..."
+            <form className="form-horizontal row" >
+
+              <div className="col-md-offset-3 col-md-6">
+
+                <div className="input-group input-group-lg" id="search-input-group">
+
+                  <input required type="text" className="form-control"
+                    placeholder="Search for restaurant, cuisine or a dish..."
                     id="search-input" />
-            <span className="input-group-btn">
-                <button type="submit" className="btn btn-lg btn-primary">
-                     Search
+                  <span className="input-group-btn">
+                    <button type="submit" className="btn btn-lg btn-primary">
+                      Search
                 </button>
-            </span>
+                  </span>
+                </div>
+              </div>
+
+            </form>
+
+            <br />
+
+            <div>
+
+              <div className="container" id="quick-search">
+                <h2>Quick Searches</h2>
+
+                <Link className="showlink" to="/restaurant/list/0">
+                  Breakfast & Brunch
+        </Link>
+
+                <Link className="showlink" to="/restaurant/list/0">
+                  Buffets
+        </Link>
+
+                <Link className="showlink" to="/restaurant/list/0">
+                  Vegan
+        </Link>
+
+                <Link className="showlink" to="/restaurant/list/0">
+                  Cafes
+        </Link>
+
+                <Link className="showlink" to="/restaurant/list/0">
+                  Night Food
+        </Link>
+
+              </div>
+
+            </div>
+
+          </div>
         </div>
-    </div>
-
-</form>
-
-<br />
-
-<div>
-
-    <div className="container" id="quick-search">
-        <h2>Quick Searches</h2>
-
-        <Link className="showlink" to="/restaurant/category/breakfast_brunch/0">
-        Breakfast & Brunch
-        </Link>
-
-        <Link className="showlink" to="/restaurant/category/buffets/0">
-        Buffets
-        </Link>
-
-        <Link className="showlink" to="/restaurant/category/vegan/0">
-        Vegan
-        </Link>
-
-        <Link className="showlink" to="/restaurant/category/cafes/0">
-        Cafes
-        </Link>
-
-        <Link className="showlink" to="/restaurant/category/night_food/0">
-        Night Food
-        </Link>
-
-    </div>
-
-      </div>
-
-</div>
-</div>
       );
     }
     return body;

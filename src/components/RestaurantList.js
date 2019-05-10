@@ -7,7 +7,7 @@ class RestaurantList extends Component {
     constructor(props) {
         
         super(props);
-        this.API_KEY = "ou624q0okuv_MSkjkb0-gXv-o9K3gi-e75adIovbe0mf86dAoqEd0QUdEgQVhgYX9roDNKBiqGJT3n04TTvbZ81-3WAjWbBqg0naS7S09qBfq6HZGFwlb3L790rUXHYx";
+        //this.API_KEY = "ou624q0okuv_MSkjkb0-gXv-o9K3gi-e75adIovbe0mf86dAoqEd0QUdEgQVhgYX9roDNKBiqGJT3n04TTvbZ81-3WAjWbBqg0naS7S09qBfq6HZGFwlb3L790rUXHYx";
         this.state = {
             category: undefined,
             data: undefined,
@@ -19,22 +19,17 @@ class RestaurantList extends Component {
 
     async getRestaurant() {
         try {
-            this.category = this.props.match.params.category;
+            //this.category = this.props.match.params.category;
             if (this.props.match.params.page === "0") {
-                const response = await axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=NYC&term=${this.category}&limit=20` , {headers: {
-                    Authorization: `Bearer ${this.API_KEY}`
-                }});
-                this.setState({ data: response.data.businesses, count: response.data.total });
+                const response = await axios.get(`http://localhost:3001/restaurants?limit=20`);
+                this.setState({ data: response.data, count: 50 });
             }
             else {
                 let offset = parseInt(this.props.match.params.page) * 20;
-                const response = await axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=NYC&term=${this.category}&limit=20&offset=${offset}` , {headers: {
-                    Authorization: `Bearer ${this.API_KEY}`
-                }});
-                this.setState({ data: response.data.businesses, count: response.data.total });
+                const response = await axios.get(`http://localhost:3001/restaurants?limit=20&offset=${offset}` );
+                this.setState({ data: response.data, count: 50 });
             }
         } catch (e) {
-            console.log("in catch");
             console.log(e);
             this.setState({
                 error: "404 - No Restaurants Found!",
@@ -91,12 +86,12 @@ class RestaurantList extends Component {
                 this.state.data &&
                 this.state.data.map(restaurant => (
 
-<div id={restaurant.id} class="card">
-                <img class="card-img-top" src={restaurant.image_url} alt="Restaurant" />
-                <div class="card-body">
-                    <p class="card-title">{restaurant.name}</p>
-                    <p class="card-text">{restaurant.location.display_address[0]}</p>
-                    <button type="button" class="btn btn-primary"><Link to={`/restaurant/${restaurant.id}`}>Details</Link></button>
+<div id={restaurant.id} className="card">
+                <img className="card-img-top" src={restaurant.image_url} alt="Restaurant" />
+                <div className="card-body">
+                    <p className="card-title">{restaurant.name}</p>
+                    <p className="card-text">{restaurant.location.display_address[0]}</p>
+                    <button type="button" className="btn btn-primary"><Link to={`/restaurant/${restaurant.id}`}>Details</Link></button>
                 </div>
 
                 <br /><br/>

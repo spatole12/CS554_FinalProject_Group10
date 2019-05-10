@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Restaurant extends Component {
    constructor(props) {
       super(props);
-      this.API_KEY = "ou624q0okuv_MSkjkb0-gXv-o9K3gi-e75adIovbe0mf86dAoqEd0QUdEgQVhgYX9roDNKBiqGJT3n04TTvbZ81-3WAjWbBqg0naS7S09qBfq6HZGFwlb3L790rUXHYx";
+      //this.API_KEY = "ou624q0okuv_MSkjkb0-gXv-o9K3gi-e75adIovbe0mf86dAoqEd0QUdEgQVhgYX9roDNKBiqGJT3n04TTvbZ81-3WAjWbBqg0naS7S09qBfq6HZGFwlb3L790rUXHYx";
       this.state = {
          data: undefined,
          loading: false,
@@ -21,10 +22,7 @@ class Restaurant extends Component {
          loading: true
       });
       try {
-         const response = await axios.get(
-            `${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.match.params.id}`, {headers: {
-              Authorization: `Bearer ${this.API_KEY}`
-          }});
+         const response = await axios.get(`http://localhost:3001/restaurantDetails/${this.props.match.params.id}`);
          this.setState({
             data: response.data,
             loading: false
@@ -107,7 +105,8 @@ class Restaurant extends Component {
                <b>Address</b>:
                <p>{displayAddress}</p>
 
-               
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/order/${this.props.match.params.id}`}>Order Now</Link></button>
+
             </div>
          );
       }

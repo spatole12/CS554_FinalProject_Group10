@@ -1,0 +1,19 @@
+{
+  "name": "CS554_FinalProject_Group10_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "seed": "node ./tasks/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Mansi Padalia",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "mongodb": "^3.1.13",
+    "node-uuid": "^1.4.7"
+  }
+}
