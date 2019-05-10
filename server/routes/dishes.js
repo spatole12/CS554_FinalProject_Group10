@@ -1,17 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
-const restaurantsData = data.restaurants;
+const dishesData = data.dishes;
 
-router.get("/", async (req, res) => {
+router.get("/:restaurantId", async (req, res) => {
   try {
-    const restaurantList = await restaurantsData.getAllRestaurants(req.query.offset, req.query.limit);
+    const dishesList = await dishesData.getAllDishesForRestaurantById(req.params.restaurantId);
     
-    res.json(restaurantList);
+    res.json(dishesList);
   } catch (e) {
     res.status(422).json({ error: e });
   }
 });
+
 
 
 module.exports = router;

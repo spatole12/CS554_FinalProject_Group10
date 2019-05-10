@@ -101,7 +101,7 @@ class RestaurantList extends Component {
                 ));
 
             body = (
-                <div>
+                <div className="black-color">
                     <h1>Restaurants</h1>
                     <table>
                         <tbody>

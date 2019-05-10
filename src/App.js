@@ -8,12 +8,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 class App extends Component {
 
   renderDefaultContainer() {
-    return (props) => <DefaultContainer {...props} isAuthed={true} />;
+    return (props) => <DefaultContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
   }
 
   renderRestaurantContainer() {
-    return (props) => <RestaurantContainer {...props} isAuthed={true} />;
+    return (props) => <RestaurantContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
   }
+
+  //change auth level to differentiate between a normal user and restaurant owner, also maintain user id (some kind of unique id) for each user
 
   render() {
     return (
