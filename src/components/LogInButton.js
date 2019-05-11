@@ -10,7 +10,8 @@ export default class LogInButton extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.state = {
         email : '',
-        password : ''
+        password : '',
+        error:'',
       };
     }
   
@@ -26,6 +27,7 @@ export default class LogInButton extends React.Component {
         fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(this.onClose)
         .catch((error)=>{
             console.log(error);
+            this.setState({error:error});
         });
     }
  
@@ -42,11 +44,14 @@ export default class LogInButton extends React.Component {
                         <form>
                             <div>
                             <label htmlFor="emailadd">Email address</label>
-                                <input value = {this.state.email} onChange={this.handleChange} type="email" name="email"  id="emailadd" aria-describedby="emailHelp" placeholder="Enter email"></input>
+                                <input value = {this.state.email} onChange={this.handleChange} type="email" name="email"  id="emailadd" aria-describedby="emailHelp" placeholder="Enter email" required></input>
                             </div>
                             <div>
                             <label htmlFor="passwordid">Password</label>
-                            <input  value = {this.state.password} onChange={this.handleChange} type="password" name="password" id="passwordid" aria-describedby="emailHelp" placeholder="Enter Password"></input>
+                            <input  value = {this.state.password} onChange={this.handleChange} type="password" name="password" id="passwordid" aria-describedby="emailHelp" placeholder="Enter Password" required></input>
+                            </div>
+                            <div className='validation-error'>
+                                {this.state.error.message}
                             </div>
                             <div>
                             <button type="submit " onClick = {this.login} className="btn-primary" >Login as User </button>

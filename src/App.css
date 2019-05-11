@@ -290,3 +290,8 @@ h1, h2, h3 {
   transition: border 0.5s ease-out;
   border-bottom: 2px solid blue;
 }
+
+
+.validation-error{
+  color:"red";
+}

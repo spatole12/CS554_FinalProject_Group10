@@ -11,7 +11,8 @@ export default class SignUpButton extends React.Component {
       
       this.state = {
         email: '',
-        password:''
+        password:'',
+        error:'',
       };
     }
   
@@ -26,6 +27,7 @@ export default class SignUpButton extends React.Component {
       fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then(this.onClose ).then((u)=>{
       }).catch((error)=>{
           console.log(error);
+          this.setState({error:error});
       });
 
   }
@@ -35,28 +37,31 @@ export default class SignUpButton extends React.Component {
         <div>
           <Modal.Dialog>
             <Modal.Header>
-                <Modal.Title className="login-title">Food Explore</Modal.Title>
+                <Modal.Title>Food Explore</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body className="modal-body">
+            <Modal.Body>
                 <form>
-                <div>
+                <div className="input-group">
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username"onChange={this.handleChange} placeholder="Username"/>
                 </div>
-                <div>
+                <div className="input-group">
                 <label htmlFor="email">Email</label>
                 <input type="text" name="email" value = {this.state.email} onChange={this.handleChange} placeholder="Email"/>
                 </div>
-                <div>
+                <div className="input-group">
                 <label htmlFor="password">Password</label>
                 <input type="password" value = {this.state.password} name="password" onChange={this.handleChange} placeholder="Password"/>
+                </div>
+                <div className='validation-error'>
+                    {this.state.error.message}
                 </div>
                 <button type="button" onClick={this.signup}>SignUp</button>
                 </form>
             </Modal.Body>
 
-            <Modal.Footer className="modal-footer">
+            <Modal.Footer>
             <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={(e)=>{this.onClose(e)}}>Close</button>
 
             </Modal.Footer>
