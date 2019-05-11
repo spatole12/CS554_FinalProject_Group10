@@ -35,20 +35,20 @@ export default class SignUpButton extends React.Component {
         <div>
           <Modal.Dialog>
             <Modal.Header>
-                <Modal.Title>Food Explore</Modal.Title>
+                <Modal.Title className="login-title">Food Explore</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body>
+            <Modal.Body className="modal-body">
                 <form>
-                <div className="input-group">
+                <div>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username"onChange={this.handleChange} placeholder="Username"/>
                 </div>
-                <div className="input-group">
+                <div>
                 <label htmlFor="email">Email</label>
                 <input type="text" name="email" value = {this.state.email} onChange={this.handleChange} placeholder="Email"/>
                 </div>
-                <div className="input-group">
+                <div>
                 <label htmlFor="password">Password</label>
                 <input type="password" value = {this.state.password} name="password" onChange={this.handleChange} placeholder="Password"/>
                 </div>
@@ -56,7 +56,7 @@ export default class SignUpButton extends React.Component {
                 </form>
             </Modal.Body>
 
-            <Modal.Footer>
+            <Modal.Footer className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={(e)=>{this.onClose(e)}}>Close</button>
 
             </Modal.Footer>
