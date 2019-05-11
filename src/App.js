@@ -4,9 +4,30 @@ import RestaurantContainer from './components/RestaurantContainer';
 import DefaultContainer from './components/DefaultContainer';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './components/Login';
+
+import fire from './config/Fire';
+
+import UserLoginButton from './components/UserLoginButton';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      user: {},
 
+      
+    }
+  }
+
+
+
+  componentDidMount(){
+    this.authListener();
+  }
+  state = {
+    show: false
+  }
   renderDefaultContainer() {
     return (props) => <DefaultContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
   }
@@ -15,9 +36,42 @@ class App extends Component {
     return (props) => <RestaurantContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
   }
 
-  //change auth level to differentiate between a normal user and restaurant owner, also maintain user id (some kind of unique id) for each user
+  showModal = () =>{
+    this.setState({
+      ...this.state,
+      show: !this.state.show
+    })
+  }
 
+  authListener(){
+    fire.auth().onAuthStateChanged((user)=>{
+      if(user){
+        this.setState({user});
+      }
+      else{
+        this.setState({user: null});
+      }
+    });
+  }
+
+//change auth level to differentiate between a normal user and restaurant owner, also maintain user id (some kind of unique id) for each user
+ 
   render() {
+
+    let button;
+    // this.setState({user:{}});
+    // console.log(this.state.user);
+    if(this.state.user)
+    {
+      // this.state.show = false;
+      button = <UserLoginButton user = {this.state.user} show = {this.state.show} />
+        
+    }else{
+      
+      button = <button id="login" className="btn btn-success navbar-btn"  onClick = {this.showModal} value = "Show Modal" >
+      {this.state.user ? "UserProfile":"Log In"}</button>
+    }
+
     return (
       <Router>
         <div className="App">
@@ -25,12 +79,17 @@ class App extends Component {
             <nav className="navbar navbar-default" style={{ "minHeight": "60px" }}>
               <div className="container">
                 <div className="navbar-right">
-                  <button id="login" className="btn btn-success navbar-btn" >Log In
-                  </button>
+                  {button}
                 </div>
+               
               </div>
+              
             </nav>
+            <Login onClose={this.showModal} show= {this.state.show} >
+                  This is a modal
+                  </Login>
           </header>
+          
           <br />
           <br />
 
