@@ -96,8 +96,16 @@ h1 a, h1 a:link, h1 a:hover, h1 a:visited {
 }
 
 .modal {
+background-color : rgb(232,232,232,0.8);
   color: black;
   text-align: center;
+  border-radius: 1rem !important;
+  width: 35%;
+  float: left !important;
+  left: 50% !important;
+  top: 50% !important; 
+  vertical-align: middle !important; 
+
 }
 
 h1, h2, h3 {
@@ -198,4 +206,87 @@ h1, h2, h3 {
   font-family: Times, serif;
   text-align: center;
   padding-top: 10px;
+}
+
+
+.backgroundCard{
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: 'rgba(0,0,0,0.3)';
+  padding : 50,
+  
+}
+
+.modalStyle{
+  background-color: '#fff';
+  border-radius :5;
+  max-width: 500;
+  min-height: 300;
+  margin:'0 auto';
+  padding:30;
+  position: relative;
+
+};
+
+.footerModal{
+  position: absolute;
+  bottom: 100
+}
+
+.login-title{
+  font-family: 'Kaushan Script',cursive;
+}
+
+.login-or {
+  position: relative;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  }
+  .span-or {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color:rgb(232,232,232,0.8);
+  width: 50px;
+  text-align: center;
+  }
+  .hr-or {
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  }
+
+  .controller {
+    flex: 1;
+    text-align: center;
+    height: 100%;
+    line-height: 2;
+    cursor: pointer;
+}
+.box-controller {
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 24em;
+  min-width: 21em;
+  height: 35px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(15, 15, 15, 0.2);
+  box-shadow: 0px 0px 20px 0px rgba(15, 15, 15, 0.2);
+  margin-bottom: 30px;
+  align-items: center;
+  transition: visibility 0.5s ease-out;
+}
+
+.selected-controller {
+  transition: border 0.5s ease-out;
+  border-bottom: 2px solid blue;
 }
