@@ -44,9 +44,8 @@ class RestaurantContainer extends Component {
         return (props) => <RestaurantOwnerOrder {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
 
-      renderRestaurantUserOrderHistoryContainer() {
-        return (props) => <RestaurantUserOrderHistory {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
-      }
+      
+
 
       renderRestaurantReserveTableContainer() {
         return (props) => <RestaurantReserveTable {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
@@ -72,6 +71,9 @@ class RestaurantContainer extends Component {
         return (props) => <RestaurantUserReservation {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
 
+      renderReviewsContainer() {
+        return (props) => <ReviewsList {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
 
     render() {
         return (
@@ -93,7 +95,7 @@ class RestaurantContainer extends Component {
                     <Route exact path="/restaurant/reservationCompleted/:id" render={this.renderRestaurantReservationCompletedContainer()} />
                     <Route exact path="/restaurant/ownerReservations/:restaurant_id" render={this.renderRestaurantOwnerReservationsContainer()} />
                     
-
+                    <Route exact path="/restaurant/reviews/:id" render={this.renderReviewsContainer()} />
                 </Switch>
             </div>
         );

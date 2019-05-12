@@ -50,11 +50,7 @@ class RestaurantList extends Component {
         let body = null;
         let li = null;
         const pageCount = Math.ceil(this.state.count / 20);
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> parent of ddd29dd... Added review functionality
         const page = this.props.match.params.page;
         const currentPage = parseInt(page) || 0;
 

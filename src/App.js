@@ -88,43 +88,7 @@ render() {
     {this.state.user ? usrname :"Log In"}</button>
   }
 
-  return (
-    <Router>
-      <div className="App">
 
-      <Login onClose={this.showModal} onHide={this.showModal} show= {this.state.show} callbackFromParent={this.myCallback}>This is modal</Login>
-      
-
-        <header className="App-header">
-        
-          <nav className="navbar navbar-default justify-content-between" style={{ "minHeight": "60px" }}>
-            <div className="">
-            
-
-<<<<<<< HEAD
-
-              <Link className="btn btn-success" to={`/`}>
-                      Food Explore
-                      </Link>
-
-                      
-            </div>
-      
-            <div className="">
-              {button}
-            </div>
-             
-            
-            
-          </nav>
-    
-        </header>
-        
-
-        <div className="App-body">
-          <Route exact path="/" render={this.renderDefaultContainer()} />
-          <Route path="/restaurant" render={this.renderRestaurantContainer()} />
-=======
     return (
       <Router>
         <div className="App">
@@ -155,15 +119,11 @@ render() {
             <Route exact path="/" render={this.renderDefaultContainer()} />
             <Route path="/restaurant" render={this.renderRestaurantContainer()} />
           </div>
->>>>>>> parent of ddd29dd... Added review functionality
+
         </div>
-      </div>
     </Router>
   );
 }
 }
 
 export default App;
-
-
-
