@@ -36,6 +36,16 @@ router.get("/restaurantOrders/:restaurant_id", async (req, res) => {
   }
 });
 
+router.get("/restaurantOrders/user/:user_id", async (req, res) => {
+  try {
+    const orderList = await ordersData.getAllOrdersForUser(req.params.user_id);
+    
+    res.json(orderList);
+  } catch (e) {
+    res.status(422).json({ error: e });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const order = await ordersData.getOrderById(req.params.id);

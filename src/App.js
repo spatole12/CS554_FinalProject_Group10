@@ -95,8 +95,14 @@ render() {
       
 
         <header className="App-header">
+        
           <nav className="navbar navbar-default justify-content-between" style={{ "minHeight": "60px" }}>
             <div className="">
+            
+              <Link to={`/`}>
+                      Food Explore
+                      </Link>
+                      
             </div>
       
             <div className="">

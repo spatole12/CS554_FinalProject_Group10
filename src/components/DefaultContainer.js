@@ -65,6 +65,10 @@ class DefaultContainer extends Component {
             <br />
 
             <div>
+            <button type="button" className="btn btn-primary"><Link to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link></button>
+               <br />
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link></button>
+               <br />
 
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>
