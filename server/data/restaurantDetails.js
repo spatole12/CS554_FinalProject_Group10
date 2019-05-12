@@ -1,6 +1,7 @@
 const mongoCollections = require("../config/mongoCollections");
 const restaurantDetails = mongoCollections.restaurantDetails;
 const uuid = require("node-uuid");
+const ObjectId = require('mongodb').ObjectID;
 
 const exportedMethods = {
   /*async getAllRestaurants(skip, limit) {
@@ -33,6 +34,23 @@ const exportedMethods = {
     if(newInsertInformation.insertedCount === 0) throw "Could not create a restaurant detail";
     const newId = newInsertInformation.insertedId;
     return await this.getRestaurantDetailsById(restaurantDetail.id);
+  },
+  async updateRestaurantDetails(restaurantReviews, id) {
+    const restaurantDetailsCollection = await restaurantDetails();
+
+    // const newInsert = await restaurantDetailsCollection.findOneAndUpdate({_id: new ObjectId(id)}, {$set: {reviews: restaurantDetail}}, {upsert: true}, function(err,doc) {
+    //   if (err) { console.log(err); }
+    //   else { console.log("Updated", newInsert); }
+    // });  
+
+    //need help here. need to update the restaurantDetails collection with the new reviews. find by id and update the reviews part
+    const newInsert = await restaurantDetailsCollection.updateOne({_id: new ObjectId(id)}, {$set: {reviews: restaurantReviews}}, function(err,doc) {
+      if (err) { console.log(err); }
+      else { console.log("Updated", newInsert); }
+    });  
+
+    console.log('newInsert: ', newInsert.id);
+    return await this.getRestaurantDetailsById(newInsert.id);
   }
 };
 

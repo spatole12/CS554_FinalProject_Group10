@@ -17,6 +17,7 @@ class RestaurantList extends Component {
 
     async getRestaurantOrder() {
         try {
+            
                 const response = await axios.get(`http://localhost:3001/restaurant/dishes/${this.props.match.params.id}`);
                 this.setState({ data: response.data});
             
@@ -83,7 +84,7 @@ class RestaurantList extends Component {
 
         try {
             const response = await axios.post('http://localhost:3001/orders/', { posted_data: this.state.postOrder });
-            
+            console.log('response: ', response);
             this.state.orderId = response.data._id;
 
             let cost = 0;

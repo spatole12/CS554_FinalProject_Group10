@@ -26,16 +26,6 @@ router.post("/", async (req, res) => {
 });
 
 
-router.get("/restaurantOrders/:restaurant_id", async (req, res) => {
-  try {
-    const orderList = await ordersData.getAllOrdersForRestaurant(req.params.restaurant_id);
-    
-    res.json(orderList);
-  } catch (e) {
-    res.status(422).json({ error: e });
-  }
-});
-
 router.get("/restaurantOrders/user/:user_id", async (req, res) => {
   try {
     const orderList = await ordersData.getAllOrdersForUser(req.params.user_id);
@@ -46,37 +36,5 @@ router.get("/restaurantOrders/user/:user_id", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
-  try {
-    const order = await ordersData.getOrderById(req.params.id);
-    
-    res.json(order);
-  } catch (e) {
-    res.status(422).json({ error: e });
-  }
-});
-
-router.patch("/:id", async (req, res) => {
-  const PatchTaskData = req.body;
-
-  if (!PatchTaskData) {
-    res.status(400).json({ error: "You must provide data to patch task" });
-  }
-
-  try {
-    const order = await ordersData.getOrderById(req.params.id);
-    //console.log("mansi = "+order);
-  } catch (e) {
-    res.status(404).json({ error: e });
-  }
-
-  try {
-    const OrderDetails = await ordersData.patchTask(req.params.id, PatchTaskData.patch_data);
-    res.json(OrderDetails);
-  } catch (e) {
-    res.status(500).json({ error: e });
-  }
-
-});
 
 module.exports = router;

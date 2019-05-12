@@ -5,9 +5,11 @@ class DefaultContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
       loading: false,
       searchTerm: "",
       searchLink: "/restaurant/list/0"
+
     };
   }
 
@@ -24,6 +26,7 @@ class DefaultContainer extends Component {
     document.body.style.background = null;
   }
 
+
   updateSearchTerm(e){
     this.setState({searchTerm: e.target.value});
     if(this.state.searchTerm===""){
@@ -32,6 +35,7 @@ class DefaultContainer extends Component {
       this.setState({searchLink: `/restaurant/search/${this.state.searchTerm}`});
     }
   }
+
 
   render() {
     let body = null;
@@ -55,12 +59,13 @@ class DefaultContainer extends Component {
 
                   <input required type="text" className="form-control"
                     placeholder="Search for restaurant, cuisine or a dish..."
-                    id="search-input" onChange={e => this.updateSearchTerm(e)}/>
+                    id="search-input" />
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
+
                     <Link className="btn btn-primary" to={this.state.searchLink}>
+
                       Search
-                      </Link>
                 </button>
                   </span>
                 </div>
@@ -80,27 +85,23 @@ class DefaultContainer extends Component {
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>
 
-                <Link className="showlink" to="/restaurant/popular/trending">
-                  Trending
-        </Link>
-
-                <Link className="showlink" to="/restaurant/search/breakfast_brunch">
+                <Link className="showlink" to="/restaurant/list/0">
                   Breakfast & Brunch
         </Link>
 
-                <Link className="showlink" to="/restaurant/search/buffets">
+                <Link className="showlink" to="/restaurant/list/0">
                   Buffets
         </Link>
 
-                <Link className="showlink" to="/restaurant/search/vegan">
+                <Link className="showlink" to="/restaurant/list/0">
                   Vegan
         </Link>
 
-                <Link className="showlink" to="/restaurant/search/cafes">
+                <Link className="showlink" to="/restaurant/list/0">
                   Cafes
         </Link>
 
-                <Link className="showlink" to="/restaurant/search/night_food">
+                <Link className="showlink" to="/restaurant/list/0">
                   Night Food
         </Link>
 
