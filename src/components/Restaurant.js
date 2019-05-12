@@ -80,15 +80,6 @@ class Restaurant extends Component {
       }
       displayAddress.push(address);
     }
-
-    var displayReviews = [],
-        review;
-
-
-    for ( i = 0; i < this.state.data.reviews.length; i++) {
-      review = <li>{this.state.data.reviews[i].text}<b><span> - </span>{this.state.data.reviews[i].user.name}</b></li>
-      displayReviews.push(review);
-    }
          
          body = (
             <div className="black-color" style={{"margin-bottom":"20px"}} >
@@ -113,6 +104,7 @@ class Restaurant extends Component {
                
                <b>Address</b>:
                <p>{displayAddress}</p>
+<<<<<<< HEAD
   
                <b>Reviews</b>:
                <p>{displayReviews}</p><br/>
@@ -128,7 +120,17 @@ class Restaurant extends Component {
                
                <Link className="btn btn-primary" to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link>
                </div>  
+=======
+>>>>>>> parent of ddd29dd... Added review functionality
 
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/order/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Order Now</Link></button>
+               <br />
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/reserveTable/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Reserve Table</Link></button>
+               <br />
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/ownerOrders/${this.props.match.params.id}`}>Orders Owner</Link></button>
+               <br />
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link></button>
+               
             </div>
          );
       }

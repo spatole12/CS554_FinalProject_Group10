@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class RestaurantList extends Component {
+class RestaurantOrderList extends Component {
 
     constructor(props) {
         
@@ -17,7 +17,6 @@ class RestaurantList extends Component {
 
     async getRestaurantOrder() {
         try {
-            
                 const response = await axios.get(`http://localhost:3001/restaurant/dishes/${this.props.match.params.id}`);
                 this.setState({ data: response.data});
             
@@ -84,7 +83,7 @@ class RestaurantList extends Component {
 
         try {
             const response = await axios.post('http://localhost:3001/orders/', { posted_data: this.state.postOrder });
-            console.log('response: ', response);
+            
             this.state.orderId = response.data._id;
 
             let cost = 0;
@@ -127,15 +126,19 @@ class RestaurantList extends Component {
                 this.state.data.map(dish => (
 
                 <tr>
-                
+
                         <td>{dish.title}</td>
                         <td>{((dish.description).length > 0 ? dish.description : '-')}</td>
                         <td>{dish.price}</td>
                         <td>
                             <input type="number" default="0" id={dish.id} 
-                            onChange={e => this.handleChange(e, dish.id, dish.price)}></input>
+                            onChange={e => this.handleChange(e, dish.id, dish, dish.price)}></input>
                         </td>                        
                 </tr>
+
+
+          
+
             
                 ));
 
@@ -164,4 +167,4 @@ class RestaurantList extends Component {
     }
 }
 
-export default RestaurantList;
+export default RestaurantOrderList;

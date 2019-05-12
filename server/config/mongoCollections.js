@@ -18,7 +18,6 @@ module.exports = {
   restaurantDetails: getCollectionFn("restaurantDetails"),
   restaurantDishesMap: getCollectionFn("restaurantDishesMap"),
   dishes: getCollectionFn("dishes"),
-  reviews: getCollectionFn("reviews"),
-  restaurantReviewsMap: getCollectionFn("restaurantReviewsMap"),
-  orders: getCollectionFn("orders")
+  orders: getCollectionFn("orders"),
+  reservations: getCollectionFn("reservations")
 };

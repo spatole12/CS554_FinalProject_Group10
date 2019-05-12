@@ -17,6 +17,7 @@ const exportedMethods = {
     skip = intOrNaN(skip);
     limit = intOrNaN(limit);
     if (limit > 100) limit = 100;
+
     const restaurantsCollection = await restaurants();
     return await restaurantsCollection.find({}).skip(skip).limit(limit).toArray();
   },

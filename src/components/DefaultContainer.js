@@ -6,6 +6,7 @@ class DefaultContainer extends Component {
     super(props);
     this.state = {
 
+
       loading: false,
       searchTerm: "",
       searchLink: "/restaurant/list/0"
@@ -27,6 +28,7 @@ class DefaultContainer extends Component {
   }
 
 
+
   updateSearchTerm(e){
     this.setState({searchTerm: e.target.value});
     if(this.state.searchTerm===""){
@@ -35,7 +37,6 @@ class DefaultContainer extends Component {
       this.setState({searchLink: `/restaurant/search/${this.state.searchTerm}`});
     }
   }
-
 
   render() {
     let body = null;
@@ -59,13 +60,14 @@ class DefaultContainer extends Component {
 
                   <input required type="text" className="form-control"
                     placeholder="Search for restaurant, cuisine or a dish..."
-                    id="search-input" />
+                    id="search-input" onChange={e => this.updateSearchTerm(e)}/>
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
 
-                    <Link className="btn btn-primary" to={this.state.searchLink}>
-
+                    <Link to={`/restaurant/search/${this.state.searchTerm}`}>
+>>>>>>> parent of ddd29dd... Added review functionality
                       Search
+                      </Link>
                 </button>
                   </span>
                 </div>
@@ -76,32 +78,38 @@ class DefaultContainer extends Component {
             <br />
 
             <div>
+
             <div class="btn-group">
             <Link className="btn btn-primary" to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link>
                
                <Link className="btn btn-primary" to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link>
               </div>
 
+
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/popular/trending">
+                  Trending
+        </Link>
+
+                <Link className="showlink" to="/restaurant/search/breakfast_brunch">
                   Breakfast & Brunch
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/buffets">
                   Buffets
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/vegan">
                   Vegan
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/cafes">
                   Cafes
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/night_food">
                   Night Food
         </Link>
 

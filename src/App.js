@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import RestaurantContainer from './components/RestaurantContainer';
 import DefaultContainer from './components/DefaultContainer';
+import { Link } from 'react-router-dom';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
@@ -100,6 +101,7 @@ render() {
             <div className="">
             
 
+<<<<<<< HEAD
 
               <Link className="btn btn-success" to={`/`}>
                       Food Explore
@@ -122,6 +124,38 @@ render() {
         <div className="App-body">
           <Route exact path="/" render={this.renderDefaultContainer()} />
           <Route path="/restaurant" render={this.renderRestaurantContainer()} />
+=======
+    return (
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <nav className="navbar navbar-default" style={{ "minHeight": "60px" }}>
+              <div className="container">
+              <div className="navbar-right">
+              <Link to={`/`}>
+                      Food Explore
+                      </Link>
+                      </div>
+                <div className="navbar-right">
+                  {button}
+                </div>
+               
+              </div>
+              
+            </nav>
+            <Login onClose={this.showModal} show= {this.state.show} callbackFromParent={this.myCallback}>
+                  This is a modal
+                  </Login>
+          </header>
+          
+          <br />
+          <br />
+
+          <div className="App-body">
+            <Route exact path="/" render={this.renderDefaultContainer()} />
+            <Route path="/restaurant" render={this.renderRestaurantContainer()} />
+          </div>
+>>>>>>> parent of ddd29dd... Added review functionality
         </div>
       </div>
     </Router>
