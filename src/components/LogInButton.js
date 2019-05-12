@@ -12,6 +12,7 @@ export default class LogInButton extends React.Component {
         email : '',
         password : '',
         error:'',
+        fieldError:''
       };
     }
   
@@ -27,7 +28,11 @@ export default class LogInButton extends React.Component {
         fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(this.onClose)
         .catch((error)=>{
             console.log(error);
+            if(!this.state.email || !this.state.password){
+                this.setState({fieldError:"Fields cannot be left empty!"});
+            }else{
             this.setState({error:error});
+            }
         });
     }
  
@@ -51,6 +56,7 @@ export default class LogInButton extends React.Component {
                             <input  value = {this.state.password} onChange={this.handleChange} type="password" name="password" id="passwordid" aria-describedby="emailHelp" placeholder="Enter Password" required></input>
                             </div>
                             <div className='validation-error'>
+                                {this.state.fieldError}
                                 {this.state.error.message}
                             </div>
                             <div>

@@ -10,9 +10,11 @@ export default class SignUpButton extends React.Component {
       this.signup = this.signup.bind(this);
       
       this.state = {
+        username:'',
         email: '',
         password:'',
         error:'',
+        fieldError:''
       };
     }
   
@@ -26,8 +28,13 @@ export default class SignUpButton extends React.Component {
       e.preventDefault();
       fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then(this.onClose ).then((u)=>{
       }).catch((error)=>{
-          console.log(error);
-          this.setState({error:error});
+          if(!this.state.email || !this.state.password || !this.state.username){
+            console.log(error);
+            this.setState({fieldError:"Fields cannot be left empty!"});
+            }else{
+            console.log("in else");
+            this.setState({error:error});
+            }
       });
 
   }
@@ -44,7 +51,7 @@ export default class SignUpButton extends React.Component {
                 <form>
                 <div className="input-group">
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username"onChange={this.handleChange} placeholder="Username"/>
+                <input type="text" name="username" value = {this.state.username} onChange={this.handleChange} placeholder="Username"/>
                 </div>
                 <div className="input-group">
                 <label htmlFor="email">Email</label>
@@ -55,6 +62,7 @@ export default class SignUpButton extends React.Component {
                 <input type="password" value = {this.state.password} name="password" onChange={this.handleChange} placeholder="Password"/>
                 </div>
                 <div className='validation-error'>
+                    {this.state.fieldError}
                     {this.state.error.message}
                 </div>
                 <button type="button" onClick={this.signup}>SignUp</button>
