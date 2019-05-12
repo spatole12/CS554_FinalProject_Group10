@@ -36,6 +36,16 @@ router.get("/restaurantReservations/:restaurant_id", async (req, res) => {
   }
 });
 
+router.get("/restaurantReservations/user/:user_id", async (req, res) => {
+  try {
+    const reservationList = await reservationsData.getAllReservationsForUser(req.params.user_id);
+    
+    res.json(reservationList);
+  } catch (e) {
+    res.status(422).json({ error: e });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const reservation = await reservationsData.getReservationById(req.params.id);

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';    
-import {Modal} from 'react-bootstrap';
 import fire from '../config/Fire';
 export default class SignUpButton extends React.Component {
 
@@ -43,39 +42,34 @@ export default class SignUpButton extends React.Component {
     render() {
       return (
         <div>
-          <Modal.Dialog>
-            <Modal.Header>
-                <Modal.Title>Food Explore</Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-                <form>
-                <div className="input-group">
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" value = {this.state.username} onChange={this.handleChange} placeholder="Username"/>
+                <form style={{"textAlign": "left"}}>
+                <div className="form-group row">
+                  <label htmlFor="username" className="col-sm-4 col-form-label">Username</label>
+                  <div className="col-sm-8">
+                    <input type="text" name="username" className="form-control" value = {this.state.username} onChange={this.handleChange} placeholder="Username"/>
+                  </div>
                 </div>
-                <div className="input-group">
-                <label htmlFor="email">Email</label>
-                <input type="text" name="email" value = {this.state.email} onChange={this.handleChange} placeholder="Email"/>
+                <div className="form-group row">
+                  <label htmlFor="email" className="col-sm-4 col-form-label">Email</label>
+                  <div className="col-sm-8">
+                    <input type="text" name="email" className= "form-control" value = {this.state.email} onChange={this.handleChange} placeholder="Email"/>
+                  </div>
                 </div>
-                <div className="input-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" value = {this.state.password} name="password" onChange={this.handleChange} placeholder="Password"/>
+                <div className="form-group row">
+                  <label htmlFor="password" className="col-sm-4 col-form-label">Password</label>
+                  <div className="col-sm-8">
+                    <input type="password" className="form-control" value = {this.state.password} name="password" onChange={this.handleChange} placeholder="Password"/>
+                  </div>
                 </div>
                 <div className='validation-error'>
                     {this.state.fieldError}
                     {this.state.error.message}
                 </div>
-                <button type="button" onClick={this.signup}>SignUp</button>
+                <div className="row justify-content-center">
+                  <button type="submit " onClick = {this.signup} className="btn-primary" > SignUp</button>
+                </div>
                 </form>
-            </Modal.Body>
-
-            <Modal.Footer>
-            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={(e)=>{this.onClose(e)}}>Close</button>
-
-            </Modal.Footer>
-            </Modal.Dialog>
-        </div>
+            </div>
       );
     }
   }

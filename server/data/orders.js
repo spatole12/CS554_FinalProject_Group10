@@ -18,6 +18,12 @@ const exportedMethods = {
     const newId = newInsertInformation.insertedId;
     return await this.getOrderById(newId);
   },
+  async getAllOrdersForUser(user_id) {
+    //console.log(user_id);
+    const orderCollection = await orders();
+    return await orderCollection.find({ user_id: parseInt(user_id)}).toArray();
+  },
+  
   async getOrderById(id) {
 
     if (id === undefined) throw "Invalid Value, Order Id must be specified";

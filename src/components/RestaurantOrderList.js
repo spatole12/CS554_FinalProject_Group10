@@ -118,25 +118,35 @@ class RestaurantList extends Component {
                 this.state.data &&
                 this.state.data.map(dish => (
 
-<div className="card">
+                <tr>
                 
-                <div>
-                    <p >{dish.title}</p>
-                    <p >{dish.description} </p>
-                    <p >{dish.price}</p>
-                    <input type="number" default="0" id={dish.id} onChange={e => this.handleChange(e, dish.id, dish.price)}></input>
-                    
-                </div>
-
-                <br /><br/>
-            </div>
+                        <td>{dish.title}</td>
+                        <td>{((dish.description).length > 0 ? dish.description : '-')}</td>
+                        <td>{dish.price}</td>
+                        <td>
+                            <input type="number" default="0" id={dish.id} 
+                            onChange={e => this.handleChange(e, dish.id, dish.price)}></input>
+                        </td>                        
+                </tr>
             
                 ));
 
             body = (
                 <div className="black-color">
                     <h1>Restaurant Menu</h1>
-                    <ul className="list-unstyled">{li}</ul>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {li}
+                        </tbody>
+                    </table>
                     
                     <button type="button" className="btn btn-primary" onClick={e=>this.placeOrder()}>Place Order</button>
                 </div>

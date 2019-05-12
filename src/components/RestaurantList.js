@@ -50,6 +50,7 @@ class RestaurantList extends Component {
         let body = null;
         let li = null;
         const pageCount = Math.ceil(this.state.count / 20);
+
         const page = this.props.match.params.page;
         const currentPage = parseInt(page) || 0;
 
@@ -82,6 +83,8 @@ class RestaurantList extends Component {
         }
         else {
 
+            let maxlimit = 24;
+
             li =
                 this.state.data &&
                 this.state.data.map(restaurant => (
@@ -89,12 +92,11 @@ class RestaurantList extends Component {
 <div id={restaurant.id} className="card">
                 <img className="card-img-top" src={restaurant.image_url} alt="Restaurant" />
                 <div className="card-body">
-                    <p className="card-title">{restaurant.name}</p>
+                    <p className="card-title">{((restaurant.name).length > maxlimit) ? 
+                        (((restaurant.name).substring(0,maxlimit-3)) + '...') : restaurant.name}</p>
                     <p className="card-text">{restaurant.location.display_address[0]}</p>
-                    <button type="button" className="btn btn-primary"><Link to={`/restaurant/${restaurant.id}`}>Details</Link></button>
+                    <Link className="btn btn-primary" to={`/restaurant/${restaurant.id}`}>Details</Link>
                 </div>
-
-                <br /><br/>
             </div>
 
             

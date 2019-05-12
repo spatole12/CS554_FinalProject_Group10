@@ -30,14 +30,15 @@ class DefaultContainer extends Component {
         <div>{this.props.isAuthed}
 
 
-          <div className="container-fluid text-center main-container">
+          <div className="fancy-image">
+          <div className="container-fluid text-center">
 
             <h1>Food Explore</h1>
 
 
-            <form className="form-horizontal row" >
+            <form className="form-horizontal row justify-content-center">
 
-              <div className="col-md-offset-3 col-md-6">
+              <div className="col-md-6">
 
                 <div className="input-group input-group-lg" id="search-input-group">
 
@@ -57,6 +58,10 @@ class DefaultContainer extends Component {
             <br />
 
             <div>
+            <button type="button" className="btn btn-primary"><Link to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link></button>
+               <br />
+               <button type="button" className="btn btn-primary"><Link to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link></button>
+               <br />
 
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>
@@ -86,6 +91,7 @@ class DefaultContainer extends Component {
             </div>
 
           </div>
+        </div>
         </div>
       );
     }

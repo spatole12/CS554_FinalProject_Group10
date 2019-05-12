@@ -27,7 +27,7 @@ class App extends Component {
 
   componentWillMount(){
     localStorage.getItem('email') && this.setState({
-      useremail : JSON.parse(localStorage.getItem('email')),
+      useremail : JSON.parse(localStorage.getItem('email'))
     })
   }
 
@@ -35,9 +35,7 @@ class App extends Component {
   componentDidMount(){
     this.authListener();
   }
-  state = {
-    show: false
-  }
+
   renderDefaultContainer() {
     return (props) => <DefaultContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
   }
@@ -73,52 +71,59 @@ class App extends Component {
 
 //change auth level to differentiate between a normal user and restaurant owner, also maintain user id (some kind of unique id) for each user
  
-  render() {
+render() {
 
-    let button;
-    // this.setState({user:{}});
-    // console.log(this.state.user);
-    if(this.state.user)
-    {
-      // this.state.show = false;
-      button = <UserLoginButton user = {this.state.user} show = {this.state.show} email = {this.state.useremail}/>
-        
-    }else{
-      let usrname = this.state.useremail;
-      button = <button id="login" className="btn btn-success navbar-btn"  onClick = {this.showModal} value = "Show Modal" >
-      {this.state.user ? usrname :"Log In"}</button>
-    }
-
-    return (
-      <Router>
-        <div className="App">
-          <header className="App-header">
-            <nav className="navbar navbar-default" style={{ "minHeight": "60px" }}>
-              <div className="container">
-                <div className="navbar-right">
-                  {button}
-                </div>
-               
-              </div>
-              
-            </nav>
-            <Login onClose={this.showModal} show= {this.state.show} callbackFromParent={this.myCallback}>
-                  This is a modal
-                  </Login>
-          </header>
-          
-          <br />
-          <br />
-
-          <div className="App-body">
-            <Route exact path="/" render={this.renderDefaultContainer()} />
-            <Route path="/restaurant" render={this.renderRestaurantContainer()} />
-          </div>
-        </div>
-      </Router>
-    );
+  let button;
+  // this.setState({user:{}});
+  // console.log(this.state.user);
+  if(this.state.user)
+  {
+    // this.state.show = false;
+    button = <UserLoginButton user = {this.state.user} show = {this.state.show} email = {this.state.useremail}/>
+      
+  }else{
+    let usrname = this.state.useremail;
+    button = <button id="login" className="btn btn-success navbar-btn"  onClick = {this.showModal} value = "Show Modal" >
+    {this.state.user ? usrname :"Log In"}</button>
   }
+
+  return (
+    <Router>
+      <div className="App">
+
+      <Login onClose={this.showModal} onHide={this.showModal} show= {this.state.show} callbackFromParent={this.myCallback}>This is modal</Login>
+      
+
+        <header className="App-header">
+        
+          <nav className="navbar navbar-default justify-content-between" style={{ "minHeight": "60px" }}>
+            <div className="">
+            
+                      
+            </div>
+      
+            <div className="">
+              {button}
+            </div>
+             
+            
+            
+          </nav>
+    
+        </header>
+        
+
+        <div className="App-body">
+          <Route exact path="/" render={this.renderDefaultContainer()} />
+          <Route path="/restaurant" render={this.renderRestaurantContainer()} />
+        </div>
+      </div>
+    </Router>
+  );
+}
 }
 
 export default App;
+
+
 

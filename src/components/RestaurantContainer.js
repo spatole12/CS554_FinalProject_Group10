@@ -5,7 +5,8 @@ import Restaurant from './Restaurant';
 import RestaurantOrderList from './RestaurantOrderList';
 import RestaurantOrderCompleted from './RestaurantOrderCompleted';
 import ReviewsList from './reviewsList';
-
+import RestaurantUserOrderHistory from './RestaurantUserOrderHistory';
+import RestaurantUserReservation from './RestaurantUserReservation';
 
 class RestaurantContainer extends Component {
 
@@ -29,6 +30,14 @@ class RestaurantContainer extends Component {
         return (props) => <ReviewsList {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
 
+      renderRestaurantUserOrderHistoryContainer() {
+        return (props) => <RestaurantUserOrderHistory {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
+      renderRestaurantUserReservationsContainer() {
+        return (props) => <RestaurantUserReservation {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
 
     render() {
         return (
@@ -39,6 +48,8 @@ class RestaurantContainer extends Component {
                     <Route exact path="/restaurant/orderCompleted/:id" render={this.renderRestaurantOrderCompletedContainer()} />
                     <Route exact path="/restaurant/order/:id" render={this.renderRestaurantOrderContainer()} />
                     <Route exact path="/restaurant/reviews/:id" render={this.renderReviewsContainer()} />
+                    <Route exact path="/restaurant/userOrders/:user_id" render={this.renderRestaurantUserOrderHistoryContainer()} />
+                    <Route exact path="/restaurant/userReservations/:user_id" render={this.renderRestaurantUserReservationsContainer()} />
                 </Switch>
             </div>
         );

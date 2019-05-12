@@ -26,5 +26,15 @@ router.post("/", async (req, res) => {
 });
 
 
+router.get("/restaurantOrders/user/:user_id", async (req, res) => {
+  try {
+    const orderList = await ordersData.getAllOrdersForUser(req.params.user_id);
+    
+    res.json(orderList);
+  } catch (e) {
+    res.status(422).json({ error: e });
+  }
+});
+
 
 module.exports = router;

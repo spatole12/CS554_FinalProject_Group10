@@ -23,6 +23,11 @@ const exportedMethods = {
     const reservationCollection = await reservations();
     return await reservationCollection.find({ restaurant_id: restaurant_id, status: "Pending" }).toArray();
   },
+  async getAllReservationsForUser(user_id) {
+    
+    const reservationCollection = await reservations();
+    return await reservationCollection.find({ user_id: parseInt(user_id) }).toArray();
+  },
   async getReservationById(id) {
 
     if (id === undefined) throw "Invalid Value, Reservation Id must be specified";
