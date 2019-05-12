@@ -39,11 +39,14 @@ class DefaultContainer extends Component {
   }
 
   render() {
+
+    console.log("auth level = "+this.props.AuthLevel);
+    console.log("userId = "+this.props.userId);
     let body = null;
 
     if (this.state.loading) {
       body = (
-        <div>{this.props.isAuthed}
+        <div>
 
 
           <div className="fancy-image">
@@ -79,11 +82,13 @@ class DefaultContainer extends Component {
 
             <div>
 
+
             <div class="btn-group">
-            <Link className="btn btn-primary" to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link>
+            {this.props.AuthLevel===1 && <Link className="btn btn-primary" to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link>}
                
-               <Link className="btn btn-primary" to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link>
+            {this.props.AuthLevel===1 && <Link className="btn btn-primary" to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link>}
               </div>
+
 
 
               <div className="container" id="quick-search">

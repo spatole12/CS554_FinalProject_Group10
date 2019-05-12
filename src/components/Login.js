@@ -24,9 +24,9 @@ export default class Login extends React.Component{
         this.setState({isSignUp: true, isLogin: false});
       }
 
-      myemailCallback= (email)=>{
-        this.props.callbackFromParent(email);
-        console.log(email);
+      myemailCallback= (email, userLevel)=>{
+        this.props.callbackFromParent(email, userLevel);
+        console.log("userLevel in login "+userLevel);
       }
 
     render(){

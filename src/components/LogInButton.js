@@ -11,7 +11,8 @@ export default class LogInButton extends React.Component {
         email : '',
         password : '',
         error:'',
-        fieldError:''
+        fieldError:'',
+        userLevel : 0
       };
     }
   
@@ -22,8 +23,10 @@ export default class LogInButton extends React.Component {
         this.props.onClose && this.props.onClose(e);
     }
 
-    login(e){
+    login(userLevel, e){
         e.preventDefault();
+
+this.setState({userLevel: userLevel});
         fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(this.onClose)
         .catch((error)=>{
             console.log(error);
@@ -33,7 +36,7 @@ export default class LogInButton extends React.Component {
             this.setState({error:error});
             }
         });
-        this.props.callbackFromParent(this.state.email);
+        this.props.callbackFromParent(this.state.email, this.state.userLevel);
     }
  
   
@@ -61,8 +64,8 @@ export default class LogInButton extends React.Component {
                                 {this.state.error.message}
                             </div>
                             <div className="row justify-content-center">
-                            <button type="submit " onClick = {this.login} className="btn-primary" >Login as User </button>
-                            <button type="submit " onClick = {this.login} className="btn-primary" >Login as Restraunt Owner </button>
+                            <button type="submit " onClick = {e => this.login(1, e)} className="btn-primary" >Login as User </button>
+                            <button type="submit " onClick = {e => this.login(2, e)} className="btn-primary" >Login as Restraunt Owner </button>
                             </div>
                         </form>
             </div>

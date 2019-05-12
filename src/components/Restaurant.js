@@ -121,13 +121,13 @@ for ( i = 0; i < this.state.data.reviews.length; i++) {
 
 
 <div class="btn-group">
-               <Link className="btn btn-primary" to={`/restaurant/order/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Order Now</Link>
-               <Link className="btn btn-primary" to={`/restaurant/reviews/${this.props.match.params.id}`}>Post Review</Link>
-               <Link className="btn btn-primary" to={`/restaurant/reserveTable/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Reserve Table</Link>
+{this.props.AuthLevel===1 && <Link className="btn btn-primary" to={`/restaurant/order/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Order Now</Link>}
+{this.props.AuthLevel===1 && <Link className="btn btn-primary" to={`/restaurant/reviews/${this.props.match.params.id}`}>Post Review</Link>}
+{this.props.AuthLevel===1 && <Link className="btn btn-primary" to={`/restaurant/reserveTable/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Reserve Table</Link>}
                
-               <Link className="btn btn-primary" to={`/restaurant/ownerOrders/${this.props.match.params.id}`}>Orders Owner</Link>
+{this.props.AuthLevel===2 && <Link className="btn btn-primary" to={`/restaurant/ownerOrders/${this.props.match.params.id}`}>Orders Owner</Link>}
                
-               <Link className="btn btn-primary" to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link>
+{this.props.AuthLevel===2 && <Link className="btn btn-primary" to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link>}
                </div>  
 
             </div>

@@ -16,19 +16,24 @@ class App extends Component {
     super(props);
     this.state = {
       user: {},
-      useremail:''
-
+      useremail:'',
+      userLevel: 1
       
     }
   }
 
   componentWillUpdate(nextProps,nextState){
     localStorage.setItem("email",JSON.stringify(nextState.useremail));
+    localStorage.setItem("userLevel",JSON.stringify(nextState.userLevel));
 }
 
   componentWillMount(){
     localStorage.getItem('email') && this.setState({
       useremail : JSON.parse(localStorage.getItem('email'))
+    });
+
+    localStorage.getItem('userLevel') && this.setState({
+      userLevel : JSON.parse(localStorage.getItem('userLevel'))
     })
   }
 
@@ -38,11 +43,11 @@ class App extends Component {
   }
 
   renderDefaultContainer() {
-    return (props) => <DefaultContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
+    return (props) => <DefaultContainer {...props} isAuthed={true} AuthLevel={this.state.userLevel} userId={this.state.useremail}/>;
   }
 
   renderRestaurantContainer() {
-    return (props) => <RestaurantContainer {...props} isAuthed={true} AuthLevel={0} userId={0}/>;
+    return (props) => <RestaurantContainer {...props} isAuthed={true} AuthLevel={this.state.userLevel} userId={this.state.useremail}/>;
   }
 
   showModal = () =>{
@@ -63,9 +68,9 @@ class App extends Component {
     });
   }
 
-  myCallback=(email)=>{
+  myCallback=(email, userLevel)=>{
     console.log(email);
-    this.setState({useremail:email});
+    this.setState({useremail:email, userLevel: userLevel});
 
 
   }
@@ -96,7 +101,7 @@ render() {
             <nav className="navbar navbar-default" style={{ "minHeight": "60px" }}>
               <div className="container">
               <div className="navbar-right">
-              <Link to={`/`}>
+              <Link className="btn btn-primary" to={`/`}>
                       Food Explore
                       </Link>
                       </div>
