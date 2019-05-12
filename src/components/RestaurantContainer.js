@@ -4,7 +4,10 @@ import RestaurantList from './RestaurantList';
 import Restaurant from './Restaurant';
 import RestaurantOrderList from './RestaurantOrderList';
 import RestaurantOrderCompleted from './RestaurantOrderCompleted';
-
+import RestaurantOwnerOrder from './RestaurantOwnerOrder';
+import RestaurantOwnerReservation from './RestaurantOwnerReservation';
+import RestaurantReserveTable from './RestaurantReserveTable';
+import RestaurantReservationCompleted from './RestaurantReservationCompleted';
 
 class RestaurantContainer extends Component {
 
@@ -24,6 +27,22 @@ class RestaurantContainer extends Component {
         return (props) => <RestaurantOrderCompleted {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
 
+      renderRestaurantOwnerOrderContainer() {
+        return (props) => <RestaurantOwnerOrder {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
+      renderRestaurantReserveTableContainer() {
+        return (props) => <RestaurantReserveTable {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
+      renderRestaurantReservationCompletedContainer() {
+        return (props) => <RestaurantReservationCompleted {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
+      renderRestaurantOwnerReservationsContainer() {
+        return (props) => <RestaurantOwnerReservation {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
 
     render() {
         return (
@@ -33,6 +52,11 @@ class RestaurantContainer extends Component {
                     <Route exact path="/restaurant/:id" render={this.renderRestaurantContainer()} />
                     <Route exact path="/restaurant/orderCompleted/:id" render={this.renderRestaurantOrderCompletedContainer()} />
                     <Route exact path="/restaurant/order/:id" render={this.renderRestaurantOrderContainer()} />
+                    <Route exact path="/restaurant/ownerOrders/:restaurant_id" render={this.renderRestaurantOwnerOrderContainer()} />
+                    <Route exact path="/restaurant/reserveTable/:restaurant_id" render={this.renderRestaurantReserveTableContainer()} />
+                    <Route exact path="/restaurant/reservationCompleted/:id" render={this.renderRestaurantReservationCompletedContainer()} />
+                    <Route exact path="/restaurant/ownerReservations/:restaurant_id" render={this.renderRestaurantOwnerReservationsContainer()} />
+                    
                 </Switch>
             </div>
         );

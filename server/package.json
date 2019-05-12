@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "express": "^4.16.2",
     "mongodb": "^3.1.13",
     "node-uuid": "^1.4.7"

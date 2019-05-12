@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import queryString from 'query-string'
 
-class RestaurantOrderCompleted extends Component {
+class RestaurantReservationCompleted extends Component {
 
     constructor(props) {
         
@@ -28,7 +27,7 @@ class RestaurantOrderCompleted extends Component {
         if (this.state.loading) {
             body = (
                 <div>
-                    <h1>Order Completed</h1>
+                    <h1>Reservation Request Successful</h1>
                     <br />
                     Loading...
                    </div>
@@ -41,13 +40,10 @@ class RestaurantOrderCompleted extends Component {
             );
         } else {
 
-            const values = queryString.parse(this.props.location.search)
-            
             body = (
                 <div className="black-color">
-                    <h1>Order Completed. Thank you for your order.</h1>
-                    <p>Your order id is: {this.props.match.params.id}</p>
-                    <p>Total Amount: ${values.cost} </p>
+                    <h1>Reservation Request Successful. Your request has been sent to the restaurant , the status of your reservation should update soon..</h1>
+                    <p>Your reservation id is: {this.props.match.params.id}</p>
                     <button type="button" className="btn btn-primary"><Link to={`/` }>Go to Home Page</Link></button>
                 </div>
             );
@@ -56,4 +52,4 @@ class RestaurantOrderCompleted extends Component {
     }
 }
 
-export default RestaurantOrderCompleted;
+export default RestaurantReservationCompleted;

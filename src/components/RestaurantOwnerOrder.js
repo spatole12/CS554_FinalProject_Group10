@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-class RestaurantOrderList extends Component {
+class RestaurantOwnerOrder extends Component {
 
     constructor(props) {
         
@@ -9,28 +10,27 @@ class RestaurantOrderList extends Component {
         this.state = {
             data: undefined,
             loading: false,
-            order: [],
             error: undefined,
             orderId:undefined
         };
     }
 
-    async getRestaurantOrder() {
+    async getRestaurantOwnerOrderList() {
         try {
-                const response = await axios.get(`http://localhost:3001/restaurant/dishes/${this.props.match.params.id}`);
+                const response = await axios.get(`http://localhost:3001/orders/restaurantOrders/${this.props.match.params.restaurant_id}`);
                 this.setState({ data: response.data});
             
         } catch (e) {
             console.log(e);
             this.setState({
-                error: "404 - No Restaurants Dishes Found!",
+                error: "404 - No Orders for this Restaurant Found!",
                 loading: false
             });
         }
     }
 
     componentDidMount() {
-        this.getRestaurantOrder();
+        this.getRestaurantOwnerOrderList();
     }
 
     onSubmit(e) {
@@ -38,13 +38,12 @@ class RestaurantOrderList extends Component {
 
     }
 
-    async handleChange(e, dishId, dish, price) {
+    async handleChange(e, dishId, price) {
 
         var dishUpdate={};
         if(this.state.order.length===0){
             dishUpdate = {
                 "dish_id":dishId,
-                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -57,7 +56,6 @@ class RestaurantOrderList extends Component {
             if(!(e.target.value==="" || e.target.value===0)){
             dishUpdate = {
                 "dish_id":dishId,
-                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -65,13 +63,8 @@ class RestaurantOrderList extends Component {
         }
         }
 
-        const search = this.props.location.search; 
-        const params = new URLSearchParams(search);
-        const restaurant_name = params.get('restaurant_name');
-
         this.state.postOrder = {
             "restaurant_id": this.props.match.params.id,
-            "restaurant_name": restaurant_name,
             "user_id":this.props.userId,
             "completed":false,
             "order_details":this.state.order
@@ -79,19 +72,12 @@ class RestaurantOrderList extends Component {
 
     }
 
-    async placeOrder() {
+    async completeOrder(order_id) {
 
         try {
-            const response = await axios.post('http://localhost:3001/orders/', { posted_data: this.state.postOrder });
-            
-            this.state.orderId = response.data._id;
-
-            let cost = 0;
-            for(var i=0; i<response.data.order_details.length; i++){
-                cost = cost + (parseFloat(response.data.order_details[i].price) * parseFloat(response.data.order_details[i].quantity));
-            }
-
-            this.props.history.push(`/restaurant/orderCompleted/${this.state.orderId}?cost=${cost}`);
+            const response = await axios.patch(`http://localhost:3001/orders/${order_id}`, { patch_data: {completed: true} });
+            console.log(response);
+            window.location.reload();
             
           } catch (e) {
             console.log(`😱 Axios request failed: ${e}`);
@@ -106,7 +92,7 @@ class RestaurantOrderList extends Component {
         if (this.state.loading) {
             body = (
                 <div>
-                    <h1>Restaurant Menu</h1>
+                    <h1>Restaurant Orders</h1>
                     <br />
                     Loading...
                    </div>
@@ -120,18 +106,26 @@ class RestaurantOrderList extends Component {
         } 
         else {
 
+
             li =
                 this.state.data &&
-                this.state.data.map(dish => (
+                this.state.data.map(order => (
 
 <div className="card">
                 
                 <div>
-                    <p >{dish.title}</p>
-                    <p >{dish.description} </p>
-                    <p >{dish.price}</p>
-                    <input type="number" default="0" id={dish.id} onChange={e => this.handleChange(e, dish.id, dish, dish.price)}></input>
+                    <p >{order._id}</p>
                     
+                    <ul>
+                    {
+                order.order_details.map( order_details => <li>
+                    <p >{order_details.dish.title}</p>
+                    
+                    <p >{order_details.quantity} </p>
+                </li>)
+            }
+                    </ul>
+                    <button type="button" className="btn btn-success" onClick={e=>this.completeOrder(order._id)}>Complete</button>
                 </div>
 
                 <br /><br/>
@@ -141,10 +135,10 @@ class RestaurantOrderList extends Component {
 
             body = (
                 <div className="black-color">
-                    <h1>Restaurant Menu</h1>
+                    <h1>Restaurant Orders</h1>
                     <ul className="list-unstyled">{li}</ul>
                     
-                    <button type="button" className="btn btn-primary" onClick={e=>this.placeOrder()}>Place Order</button>
+                    <button type="button" className="btn btn-primary"><Link to={`/` }>Go to Home Page</Link></button>
                 </div>
             );
         }
@@ -152,4 +146,4 @@ class RestaurantOrderList extends Component {
     }
 }
 
-export default RestaurantOrderList;
+export default RestaurantOwnerOrder;
