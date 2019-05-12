@@ -105,14 +105,15 @@ class Restaurant extends Component {
                <b>Address</b>:
                <p>{displayAddress}</p>
 
+<div class="btn-group">
                <Link className="btn btn-primary" to={`/restaurant/order/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Order Now</Link>
-               <br />
-               <Link className="btn btn-primary" to={`/restaurant/reserveTable/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Reserve Table</Link>
-               <br />
-               <Link className="btn btn-primary" to={`/restaurant/ownerOrders/${this.props.match.params.id}`}>Orders Owner</Link>
-               <br />
-               <Link className="btn btn-primary" to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link>
                
+               <Link className="btn btn-primary" to={`/restaurant/reserveTable/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Reserve Table</Link>
+               
+               <Link className="btn btn-primary" to={`/restaurant/ownerOrders/${this.props.match.params.id}`}>Orders Owner</Link>
+               
+               <Link className="btn btn-primary" to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link>
+               </div>  
             </div>
          );
       }
