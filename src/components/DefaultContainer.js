@@ -71,10 +71,11 @@ class DefaultContainer extends Component {
             <br />
 
             <div>
+            <div class="btn-group">
             <Link className="btn btn-primary" to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link>
-               <br />
+               
                <Link className="btn btn-primary" to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link>
-               <br />
+              </div>
 
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>

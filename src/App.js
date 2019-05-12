@@ -100,7 +100,7 @@ render() {
           <nav className="navbar navbar-default justify-content-between" style={{ "minHeight": "60px" }}>
             <div className="">
             
-              <Link to={`/`}>
+              <Link className="btn btn-success" to={`/`}>
                       Food Explore
                       </Link>
                       
