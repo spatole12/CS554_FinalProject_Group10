@@ -15,11 +15,21 @@ class App extends Component {
     super(props);
     this.state = {
       user: {},
+      useremail:''
 
       
     }
   }
 
+  componentWillUpdate(nextProps,nextState){
+    localStorage.setItem("email",JSON.stringify(nextState.useremail));
+}
+
+  componentWillMount(){
+    localStorage.getItem('email') && this.setState({
+      useremail : JSON.parse(localStorage.getItem('email')),
+    })
+  }
 
 
   componentDidMount(){
@@ -64,12 +74,12 @@ class App extends Component {
     if(this.state.user)
     {
       // this.state.show = false;
-      button = <UserLoginButton user = {this.state.user} show = {this.state.show} />
+      button = <UserLoginButton user = {this.state.user} show = {this.state.show} email = {this.state.useremail}/>
         
     }else{
-      
+      let usrname = this.state.useremail;
       button = <button id="login" className="btn btn-success navbar-btn"  onClick = {this.showModal} value = "Show Modal" >
-      {this.state.user ? "UserProfile":"Log In"}</button>
+      {this.state.user ? usrname :"Log In"}</button>
     }
 
     return (

@@ -34,6 +34,7 @@ export default class LogInButton extends React.Component {
             this.setState({error:error});
             }
         });
+        this.props.callbackFromParent(this.state.email);
     }
  
   

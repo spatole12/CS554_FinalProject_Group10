@@ -36,6 +36,7 @@ export default class SignUpButton extends React.Component {
             this.setState({error:error});
             }
       });
+      this.props.callbackFromParent(this.state.email);
 
   }
   

@@ -7,7 +7,8 @@ export default class Login extends React.Component{
         super(props);
         this.state = {
             isLogin: true,
-            isSignUp: false
+            isSignUp: false,
+            usernameEmail:''
             
         }
     }
@@ -19,6 +20,11 @@ export default class Login extends React.Component{
     
       showSignUpBox() {
         this.setState({isSignUp: true, isLogin: false});
+      }
+
+      myemailCallback= (email)=>{
+        this.props.callbackFromParent(email);
+        console.log(email);
       }
 
     render(){
@@ -55,8 +61,8 @@ export default class Login extends React.Component{
                 </div>
                 
                 <div>
-                {this.state.isLogin && <LogInButton onClose={this.props.onClose}/>}
-                {this.state.isSignUp && <SignUpButton onClose ={this.props.onClose}/>}
+                {this.state.isLogin && <LogInButton onClose={this.props.onClose} callbackFromParent={this.myemailCallback}/>}
+                {this.state.isSignUp && <SignUpButton onClose ={this.props.onClose} callbackFromParent={this.myemailCallback}/>}
                 </div>
             </div>
         )

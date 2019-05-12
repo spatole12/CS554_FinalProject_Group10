@@ -5,6 +5,9 @@ class UserLoginButton extends Component {
     constructor(props){
         super(props);
         this.logout = this.logout.bind(this);
+        this.state={
+            email:''
+        }
     }
     logout(){
         fire.auth().signOut();
@@ -15,7 +18,7 @@ class UserLoginButton extends Component {
             <div>
             <Dropdown id="login" className="btn btn-success navbar-btn" onClick = {this.showModal} value = "Show Modal">
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-            {this.props.user ? "UserProfile":"Log In"}
+            {this.props.user ? this.props.email :"Log In"}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
