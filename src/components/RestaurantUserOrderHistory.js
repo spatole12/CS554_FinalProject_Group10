@@ -69,6 +69,7 @@ class RestaurantUserOrder extends Component {
                 
                 <div>
                     <p >Order ID: {order._id}</p>
+                    <p >Restaurant Name: {order.restaurant_name}</p>
                     
                     <ul>
                     {

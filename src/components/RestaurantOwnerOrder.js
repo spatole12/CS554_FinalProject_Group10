@@ -139,7 +139,7 @@ console.log(this.state.data);
                     <h1>Restaurant Orders</h1>
                     <ul className="list-unstyled">{li}</ul>
                     
-                    <button type="button" className="btn btn-primary"><Link to={`/` }>Go to Home Page</Link></button>
+                    <Link className="btn btn-primary" to={`/` }>Go to Home Page</Link>
                 </div>
             );
         }

@@ -24,7 +24,7 @@ class UserLoginButton extends Component {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-                <Dropdown.Item onClick={this.logout}><Link to={`/` }>Logout</Link></Dropdown.Item>
+                <Dropdown.Item onClick={this.logout}><Link to={`/`}>Logout</Link></Dropdown.Item>
                 {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                 <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
             </Dropdown.Menu>

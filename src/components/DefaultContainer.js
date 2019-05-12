@@ -64,8 +64,8 @@ class DefaultContainer extends Component {
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
 
-                    <Link to={`/restaurant/search/${this.state.searchTerm}`}>
->>>>>>> parent of ddd29dd... Added review functionality
+                    <Link className="btn btn-primary" to={this.state.searchLink}>
+
                       Search
                       </Link>
                 </button>

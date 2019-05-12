@@ -69,6 +69,7 @@ class RestaurantUserReservation extends Component {
                 
                 <div>
                     <p >Reservation ID: {reservation._id}</p>
+                    <p >Restaurant Name: {reservation.restaurant_name}</p>
                     <p >Date: {reservation.date}</p>
                     <p >Time: {reservation.time}</p>
                     <p >No of Guests: {reservation.no_of_guests}</p>
