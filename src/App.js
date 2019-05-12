@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import RestaurantContainer from './components/RestaurantContainer';
 import DefaultContainer from './components/DefaultContainer';
+import { Link } from 'react-router-dom';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
