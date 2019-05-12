@@ -6,6 +6,7 @@ import Restaurant from './Restaurant';
 import RestaurantOrderList from './RestaurantOrderList';
 import RestaurantOrderCompleted from './RestaurantOrderCompleted';
 import RestaurantOwnerOrder from './RestaurantOwnerOrder';
+import RestaurantUserOrderHistory from './RestaurantUserOrderHistory';
 import RestaurantOwnerReservation from './RestaurantOwnerReservation';
 import RestaurantReserveTable from './RestaurantReserveTable';
 import RestaurantReservationCompleted from './RestaurantReservationCompleted'; 
@@ -37,6 +38,10 @@ class RestaurantContainer extends Component {
         return (props) => <RestaurantOwnerOrder {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
 
+      renderRestaurantUserOrderHistoryContainer() {
+        return (props) => <RestaurantUserOrderHistory {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
       renderRestaurantReserveTableContainer() {
         return (props) => <RestaurantReserveTable {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
@@ -65,6 +70,7 @@ class RestaurantContainer extends Component {
                     <Route exact path="/restaurant/orderCompleted/:id" render={this.renderRestaurantOrderCompletedContainer()} />
                     <Route exact path="/restaurant/order/:id" render={this.renderRestaurantOrderContainer()} />
                     <Route exact path="/restaurant/ownerOrders/:restaurant_id" render={this.renderRestaurantOwnerOrderContainer()} />
+                    <Route exact path="/restaurant/userOrders/:user_id" render={this.renderRestaurantUserOrderHistoryContainer()} />
                     <Route exact path="/restaurant/reserveTable/:restaurant_id" render={this.renderRestaurantReserveTableContainer()} />
                     <Route exact path="/restaurant/reservationCompleted/:id" render={this.renderRestaurantReservationCompletedContainer()} />
                     <Route exact path="/restaurant/ownerReservations/:restaurant_id" render={this.renderRestaurantOwnerReservationsContainer()} />
