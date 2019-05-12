@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class RestaurantOrderList extends Component {
+class RestaurantList extends Component {
 
     constructor(props) {
         
@@ -17,6 +17,7 @@ class RestaurantOrderList extends Component {
 
     async getRestaurantOrder() {
         try {
+            
                 const response = await axios.get(`http://localhost:3001/restaurant/dishes/${this.props.match.params.id}`);
                 this.setState({ data: response.data});
             
@@ -38,13 +39,12 @@ class RestaurantOrderList extends Component {
 
     }
 
-    async handleChange(e, dishId, dish, price) {
+    async handleChange(e, dishId, price) {
 
         var dishUpdate={};
         if(this.state.order.length===0){
             dishUpdate = {
                 "dish_id":dishId,
-                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -57,7 +57,6 @@ class RestaurantOrderList extends Component {
             if(!(e.target.value==="" || e.target.value===0)){
             dishUpdate = {
                 "dish_id":dishId,
-                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -65,13 +64,8 @@ class RestaurantOrderList extends Component {
         }
         }
 
-        const search = this.props.location.search; 
-        const params = new URLSearchParams(search);
-        const restaurant_name = params.get('restaurant_name');
-
         this.state.postOrder = {
             "restaurant_id": this.props.match.params.id,
-            "restaurant_name": restaurant_name,
             "user_id":this.props.userId,
             "completed":false,
             "order_details":this.state.order
@@ -83,7 +77,7 @@ class RestaurantOrderList extends Component {
 
         try {
             const response = await axios.post('http://localhost:3001/orders/', { posted_data: this.state.postOrder });
-            
+            console.log('response: ', response);
             this.state.orderId = response.data._id;
 
             let cost = 0;
@@ -130,7 +124,7 @@ class RestaurantOrderList extends Component {
                     <p >{dish.title}</p>
                     <p >{dish.description} </p>
                     <p >{dish.price}</p>
-                    <input type="number" default="0" id={dish.id} onChange={e => this.handleChange(e, dish.id, dish, dish.price)}></input>
+                    <input type="number" default="0" id={dish.id} onChange={e => this.handleChange(e, dish.id, dish.price)}></input>
                     
                 </div>
 
@@ -152,4 +146,4 @@ class RestaurantOrderList extends Component {
     }
 }
 
-export default RestaurantOrderList;
+export default RestaurantList;

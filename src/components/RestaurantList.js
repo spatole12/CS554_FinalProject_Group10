@@ -50,15 +50,14 @@ class RestaurantList extends Component {
         let body = null;
         let li = null;
         const pageCount = Math.ceil(this.state.count / 20);
-        
         const page = this.props.match.params.page;
         const currentPage = parseInt(page) || 0;
 
         let prevPage;
         let nextPage;
 
-        prevPage = this.state.data && currentPage>0 && currentPage<pageCount && <td><Link onClick={() => window.location.refresh()} to={`/restaurant/list/${currentPage - 1}`}>Prev Page</Link></td>
-        nextPage = this.state.data && currentPage>=0 && currentPage<pageCount-1 && <td><Link onClick={() => window.location.refresh()} to={`/restaurant/list/${currentPage + 1}`}>Next Page</Link></td>
+        prevPage = this.state.data && this.state.data.previous && <td><Link onClick={() => window.location.refresh()} to={`/restaurant/category/${this.category}/${currentPage - 1}`}>Prev Page</Link></td>
+        nextPage = this.state.data && this.state.data.next && <td><Link onClick={() => window.location.refresh()} to={`/restaurant/category/${this.category}/${currentPage + 1}`}>Next Page</Link></td>
 
         if (this.state.loading) {
             body = (

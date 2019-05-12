@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string'
 
-class RestaurantOrderCompleted extends Component {
+class RestaurantList extends Component {
 
     constructor(props) {
         
@@ -56,4 +56,4 @@ class RestaurantOrderCompleted extends Component {
     }
 }
 
-export default RestaurantOrderCompleted;
+export default RestaurantList;
