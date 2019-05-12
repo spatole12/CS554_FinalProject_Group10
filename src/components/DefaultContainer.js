@@ -5,7 +5,8 @@ class DefaultContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+      loading: false,
+      searchTerm: ""
     };
   }
 
@@ -20,6 +21,10 @@ class DefaultContainer extends Component {
 
   componentWillUnmount() {
     document.body.style.background = null;
+  }
+
+  updateSearchTerm(e){
+    this.setState({searchTerm: e.target.value});
   }
 
   render() {
@@ -43,10 +48,12 @@ class DefaultContainer extends Component {
 
                   <input required type="text" className="form-control"
                     placeholder="Search for restaurant, cuisine or a dish..."
-                    id="search-input" />
+                    id="search-input" onChange={e => this.updateSearchTerm(e)}/>
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
+                    <Link to={`/restaurant/search/${this.state.searchTerm}`}>
                       Search
+                      </Link>
                 </button>
                   </span>
                 </div>
@@ -65,23 +72,23 @@ class DefaultContainer extends Component {
                   Trending
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/breakfast_brunch">
                   Breakfast & Brunch
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/buffets">
                   Buffets
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/vegan">
                   Vegan
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/cafes">
                   Cafes
         </Link>
 
-                <Link className="showlink" to="/restaurant/list/0">
+                <Link className="showlink" to="/restaurant/search/night_food">
                   Night Food
         </Link>
 

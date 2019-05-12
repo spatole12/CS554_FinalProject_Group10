@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import RestaurantList from './RestaurantList';
+import RestaurantSearchList from './RestaurantSearchList';
 import Restaurant from './Restaurant';
 import RestaurantOrderList from './RestaurantOrderList';
 import RestaurantOrderCompleted from './RestaurantOrderCompleted';
@@ -14,6 +15,10 @@ class RestaurantContainer extends Component {
 
     renderRestaurantListContainer() {
         return (props) => <RestaurantList {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
+      }
+
+      renderRestaurantSearchListContainer() {
+        return (props) => <RestaurantSearchList {...props} isAuthed={this.props.isAuthed} AuthLevel={this.props.AuthLevel} userId={this.props.userId}/>;
       }
 
       renderRestaurantContainer() {
@@ -53,6 +58,7 @@ class RestaurantContainer extends Component {
         return (
             <div>{this.props.isAuthed}
                 <Switch>
+                    <Route exact path="/restaurant/search/:searchTerm" render={this.renderRestaurantSearchListContainer()} />
                     <Route exact path="/restaurant/list/:page" render={this.renderRestaurantListContainer()} />
                     <Route exact path="/restaurant/:id" render={this.renderRestaurantContainer()} />
                     <Route exact path="/restaurant/popular/trending" render={this.renderRestaurantPopularContainer()} />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import RestaurantContainer from './components/RestaurantContainer';
 import DefaultContainer from './components/DefaultContainer';
+import { Link } from 'react-router-dom';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
@@ -95,6 +96,11 @@ class App extends Component {
           <header className="App-header">
             <nav className="navbar navbar-default" style={{ "minHeight": "60px" }}>
               <div className="container">
+              <div className="navbar-right">
+              <Link to={`/`}>
+                      Food Explore
+                      </Link>
+                      </div>
                 <div className="navbar-right">
                   {button}
                 </div>
