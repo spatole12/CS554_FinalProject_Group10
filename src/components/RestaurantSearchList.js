@@ -59,20 +59,21 @@ class RestaurantSearchList extends Component {
             );
         }
         else {
-console.log(this.state.data);
+
+            let maxlimit = 24;
+
             li =
                 this.state.data &&
                 this.state.data.map(restaurant => (
 
-<div id={restaurant._source.id} className="card">
+                    <div id={restaurant._source.id} className="card">
                 <img className="card-img-top" src={restaurant._source.image_url} alt="Restaurant" />
                 <div className="card-body">
-                    <p className="card-title">{restaurant._source.name}</p>
+                    <p className="card-title">{((restaurant._source.name).length > maxlimit) ? 
+                        (((restaurant._source.name).substring(0,maxlimit-3)) + '...') : restaurant._source.name}</p>
                     <p className="card-text">{restaurant._source.location.display_address[0]}</p>
-                    <button type="button" className="btn btn-primary"><Link to={`/restaurant/${restaurant._id}`}>Details</Link></button>
+                    <Link className="btn btn-primary" to={`/restaurant/${restaurant._id}`}>Details</Link>
                 </div>
-
-                <br /><br/>
             </div>
 
             

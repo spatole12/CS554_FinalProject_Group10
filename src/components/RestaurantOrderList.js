@@ -39,12 +39,13 @@ class RestaurantList extends Component {
 
     }
 
-    async handleChange(e, dishId, price) {
+    async handleChange(e, dishId, dish, price) {
 
         var dishUpdate={};
         if(this.state.order.length===0){
             dishUpdate = {
                 "dish_id":dishId,
+                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -57,6 +58,7 @@ class RestaurantList extends Component {
             if(!(e.target.value==="" || e.target.value===0)){
             dishUpdate = {
                 "dish_id":dishId,
+                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -64,8 +66,13 @@ class RestaurantList extends Component {
         }
         }
 
+        const search = this.props.location.search; 
+        const params = new URLSearchParams(search);
+        const restaurant_name = params.get('restaurant_name');
+
         this.state.postOrder = {
             "restaurant_id": this.props.match.params.id,
+            "restaurant_name": restaurant_name,
             "user_id":this.props.userId,
             "completed":false,
             "order_details":this.state.order
@@ -91,6 +98,7 @@ class RestaurantList extends Component {
             console.log(`😱 Axios request failed: ${e}`);
           }
     }
+
 
     render() {
         let body = null;

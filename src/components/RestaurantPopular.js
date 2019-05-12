@@ -70,7 +70,7 @@ class RestaurantPopular extends Component {
                 <div className="card-body">
                     <p className="card-title">{restaurant.name}</p>
                     <p className="card-text">{restaurant.location.display_address[0]}</p>
-                    <button type="button" className="btn btn-primary"><Link to={`/restaurant/${restaurant.id}`}>Details</Link></button>
+                    <Link className="btn btn-primary" to={`/restaurant/${restaurant.id}`}>Details</Link>
                 </div>
 
                 <br /><br/>

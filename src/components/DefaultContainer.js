@@ -5,7 +5,11 @@ class DefaultContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+
+      loading: false,
+      searchTerm: "",
+      searchLink: "/restaurant/list/0"
+
     };
   }
 
@@ -21,6 +25,17 @@ class DefaultContainer extends Component {
   componentWillUnmount() {
     document.body.style.background = null;
   }
+
+
+  updateSearchTerm(e){
+    this.setState({searchTerm: e.target.value});
+    if(this.state.searchTerm===""){
+      this.setState({searchLink: `/restaurant/list/0`});
+    } else {
+      this.setState({searchLink: `/restaurant/search/${this.state.searchTerm}`});
+    }
+  }
+
 
   render() {
     let body = null;
@@ -47,6 +62,9 @@ class DefaultContainer extends Component {
                     id="search-input" />
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
+
+                    <Link className="btn btn-primary" to={this.state.searchLink}>
+
                       Search
                 </button>
                   </span>
@@ -58,10 +76,11 @@ class DefaultContainer extends Component {
             <br />
 
             <div>
-            <button type="button" className="btn btn-primary"><Link to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link></button>
-               <br />
-               <button type="button" className="btn btn-primary"><Link to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link></button>
-               <br />
+            <div class="btn-group">
+            <Link className="btn btn-primary" to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link>
+               
+               <Link className="btn btn-primary" to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link>
+              </div>
 
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>

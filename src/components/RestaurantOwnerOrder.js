@@ -106,22 +106,23 @@ class RestaurantOwnerOrder extends Component {
         } 
         else {
 
-
+console.log(this.state.data);
             li =
                 this.state.data &&
                 this.state.data.map(order => (
+                    
 
 <div className="card">
                 
                 <div>
-                    <p >{order._id}</p>
+                    <p >Order ID : {order._id}</p>
                     
                     <ul>
                     {
                 order.order_details.map( order_details => <li>
-                    <p >{order_details.dish.title}</p>
+                    <p >Dish : {order_details.dish.title}</p>
                     
-                    <p >{order_details.quantity} </p>
+                    <p >Quantity : {order_details.quantity} </p>
                 </li>)
             }
                     </ul>
