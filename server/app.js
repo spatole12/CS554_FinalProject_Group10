@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
 const configRoutes = require("./routes");
-const cors = require('cors')
+const cors = require('cors');
 
 app.use(cookieParser());
 app.use(bodyParser.json());

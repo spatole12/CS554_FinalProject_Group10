@@ -61,6 +61,10 @@ class DefaultContainer extends Component {
               <div className="container" id="quick-search">
                 <h2>Quick Searches</h2>
 
+                <Link className="showlink" to="/restaurant/popular/trending">
+                  Trending
+        </Link>
+
                 <Link className="showlink" to="/restaurant/list/0">
                   Breakfast & Brunch
         </Link>
