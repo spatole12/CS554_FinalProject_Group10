@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';    
-import {Modal} from 'react-bootstrap';
 import fire from '../config/Fire';
 export default class LogInButton extends React.Component {
 
@@ -41,40 +40,31 @@ export default class LogInButton extends React.Component {
     render() {
       return (
         <div>
-               <Modal.Dialog>
-                    <Modal.Header>
-                        <Modal.Title className="login-title">Food Explore</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body className="modal-body">
-                        <form>
-                            <div>
-                            <label htmlFor="emailadd">Email address</label>
-                                <input value = {this.state.email} onChange={this.handleChange} type="email" name="email"  id="emailadd" aria-describedby="emailHelp" placeholder="Enter email" required></input>
+                        <form style={{"textAlign": "left"}}>
+                            <div className="form-group row">
+                                <label htmlFor="emailadd" 
+                                className="col-sm-4 col-form-label">Email address</label>
+                                <div className="col-sm-8">
+                                    <input className="form-control" 
+                                    value = {this.state.email} onChange={this.handleChange} type="email" name="email"  id="emailadd" aria-describedby="emailHelp" placeholder="Enter email" required></input>
+                                </div>
                             </div>
-                            <div>
-                            <label htmlFor="passwordid">Password</label>
-                            <input  value = {this.state.password} onChange={this.handleChange} type="password" name="password" id="passwordid" aria-describedby="emailHelp" placeholder="Enter Password" required></input>
+                            <div  className="form-group row">
+                                <label htmlFor="passwordid"
+                                    className="col-sm-4 col-form-label">Password</label>
+                                <div className="col-sm-8">
+                                    <input  className="form-control" value = {this.state.password} onChange={this.handleChange} type="password" name="password" id="passwordid" aria-describedby="emailHelp" placeholder="Enter Password" required></input>
+                                </div>
                             </div>
                             <div className='validation-error'>
                                 {this.state.fieldError}
                                 {this.state.error.message}
                             </div>
-                            <div>
+                            <div className="row justify-content-center">
                             <button type="submit " onClick = {this.login} className="btn-primary" >Login as User </button>
-                            {} {} 
                             <button type="submit " onClick = {this.login} className="btn-primary" >Login as Restraunt Owner </button>
                             </div>
                         </form>
-                        
-                        
-                    </Modal.Body>
-
-                    <Modal.Footer className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={(e)=>{this.onClose(e)}}>Close</button>
-
-                    </Modal.Footer>
-                    </Modal.Dialog>
             </div>
       );
     }

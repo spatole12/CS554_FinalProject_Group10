@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class RestaurantOrderList extends Component {
+class RestaurantList extends Component {
 
     constructor(props) {
         
@@ -38,13 +38,12 @@ class RestaurantOrderList extends Component {
 
     }
 
-    async handleChange(e, dishId, dish, price) {
+    async handleChange(e, dishId, price) {
 
         var dishUpdate={};
         if(this.state.order.length===0){
             dishUpdate = {
                 "dish_id":dishId,
-                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -57,7 +56,6 @@ class RestaurantOrderList extends Component {
             if(!(e.target.value==="" || e.target.value===0)){
             dishUpdate = {
                 "dish_id":dishId,
-                "dish": dish,
                 "price": price,
                 "quantity": e.target.value
             }
@@ -65,13 +63,8 @@ class RestaurantOrderList extends Component {
         }
         }
 
-        const search = this.props.location.search; 
-        const params = new URLSearchParams(search);
-        const restaurant_name = params.get('restaurant_name');
-
         this.state.postOrder = {
             "restaurant_id": this.props.match.params.id,
-            "restaurant_name": restaurant_name,
             "user_id":this.props.userId,
             "completed":false,
             "order_details":this.state.order
@@ -124,25 +117,35 @@ class RestaurantOrderList extends Component {
                 this.state.data &&
                 this.state.data.map(dish => (
 
-<div className="card">
+                <tr>
                 
-                <div>
-                    <p >{dish.title}</p>
-                    <p >{dish.description} </p>
-                    <p >{dish.price}</p>
-                    <input type="number" default="0" id={dish.id} onChange={e => this.handleChange(e, dish.id, dish, dish.price)}></input>
-                    
-                </div>
-
-                <br /><br/>
-            </div>
+                        <td>{dish.title}</td>
+                        <td>{((dish.description).length > 0 ? dish.description : '-')}</td>
+                        <td>{dish.price}</td>
+                        <td>
+                            <input type="number" default="0" id={dish.id} 
+                            onChange={e => this.handleChange(e, dish.id, dish.price)}></input>
+                        </td>                        
+                </tr>
             
                 ));
 
             body = (
                 <div className="black-color">
                     <h1>Restaurant Menu</h1>
-                    <ul className="list-unstyled">{li}</ul>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {li}
+                        </tbody>
+                    </table>
                     
                     <button type="button" className="btn btn-primary" onClick={e=>this.placeOrder()}>Place Order</button>
                 </div>
@@ -152,4 +155,4 @@ class RestaurantOrderList extends Component {
     }
 }
 
-export default RestaurantOrderList;
+export default RestaurantList;

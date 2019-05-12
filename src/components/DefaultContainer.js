@@ -35,14 +35,15 @@ class DefaultContainer extends Component {
         <div>{this.props.isAuthed}
 
 
-          <div className="container-fluid text-center main-container">
+          <div className="fancy-image">
+          <div className="container-fluid text-center">
 
             <h1>Food Explore</h1>
 
 
-            <form className="form-horizontal row" >
+            <form className="form-horizontal row justify-content-center">
 
-              <div className="col-md-offset-3 col-md-6">
+              <div className="col-md-6">
 
                 <div className="input-group input-group-lg" id="search-input-group">
 
@@ -97,6 +98,7 @@ class DefaultContainer extends Component {
             </div>
 
           </div>
+        </div>
         </div>
       );
     }

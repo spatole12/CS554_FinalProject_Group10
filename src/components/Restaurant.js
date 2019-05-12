@@ -82,7 +82,7 @@ class Restaurant extends Component {
     }
          
          body = (
-            <div className="black-color">
+            <div className="black-color" style={{"margin-bottom":"20px"}} >
                <h2 className="cap-first-letter"> 
                   {this.state.data && this.state.data.name}
                </h2>
@@ -105,14 +105,8 @@ class Restaurant extends Component {
                <b>Address</b>:
                <p>{displayAddress}</p>
 
-               <button type="button" className="btn btn-primary"><Link to={`/restaurant/order/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Order Now</Link></button>
-               <br />
-               <button type="button" className="btn btn-primary"><Link to={`/restaurant/reserveTable/${this.props.match.params.id}?restaurant_name=${this.state.data.name}`}>Reserve Table</Link></button>
-               <br />
-               <button type="button" className="btn btn-primary"><Link to={`/restaurant/ownerOrders/${this.props.match.params.id}`}>Orders Owner</Link></button>
-               <br />
-               <button type="button" className="btn btn-primary"><Link to={`/restaurant/ownerReservations/${this.props.match.params.id}`}>Reservations Owner</Link></button>
-               
+               <Link className="btn btn-primary" to={`/restaurant/order/${this.props.match.params.id}`}>Order Now</Link>
+
             </div>
          );
       }

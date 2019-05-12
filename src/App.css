@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+}
+
+.fancy-image {
+  background-image: url(./images/landing-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fancy-image > .container-fluid{
+  padding-top: 200px;
+  min-height: 90vh;
+  background: rgba(0,0,0,0.5);
 }
 
 .App-logo {
@@ -7,10 +20,7 @@
 }
 
 .App-header {
-  background-color: #178577;
-  height: 200px;
-  padding: 20px;
-  color: #222;
+  background-color: #0072ee;
 }
 
 .App-title {
@@ -72,12 +82,12 @@ ul {
 
 body {
   padding: 0;
-  
   color: white;
 }
 
-.main-container, .navbar{
-  background: rgba(0,0,0,0.5)
+.main-container{
+  background: rgba(0,0,0,0.5);
+  min-height: 100vh;
 }
 
 h1 a, h1 a:link, h1 a:hover, h1 a:visited {
@@ -91,22 +101,6 @@ h1 a, h1 a:link, h1 a:hover, h1 a:visited {
   border-radius: 0;
 }
 
-.container-fluid {
-  min-height: calc(100vh - 60px);
-}
-
-.modal {
-background-color : rgb(232,232,232,0.8);
-  color: black;
-  text-align: center;
-  border-radius: 1rem !important;
-  width: 35%;
-  float: left !important;
-  left: 50% !important;
-  top: 50% !important; 
-  vertical-align: middle !important; 
-
-}
 
 h1, h2, h3 {
   font-family: 'Pacifico', cursive;
@@ -162,18 +156,12 @@ h1, h2, h3 {
 }
 
 
-.container {
-  width: 100%;
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
 .card {
-  width: 18rem; 
+  width: 23%; 
   padding: 10px; 
   margin: 10px; 
-  height: 27rem;
   color: black;
+  float: left;
 }
 
 .black-color {
@@ -184,23 +172,16 @@ h1, h2, h3 {
   font-size: 1.2em;
 }
 
-.modal-title {
-  font-size: 1.2em;
-}
 
 .card-img-top {
-  height:60%;
+  height: 16rem;
 }
 
 .card-body {
-  height:40%; 
-  overflow:auto;
+  /* height:40%; 
+  overflow:auto; */
 }
 
-.btn-primary {
-  background-color: #0072ee;
-  border-color: #0072ee;
-}
 
 .header {
   font-family: Times, serif;
@@ -295,5 +276,3 @@ h1, h2, h3 {
 .validation-error{
   color:"red";
 }
-
-
