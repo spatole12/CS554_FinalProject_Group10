@@ -58,7 +58,7 @@ class DefaultContainer extends Component {
                     id="search-input" onChange={e => this.updateSearchTerm(e)}/>
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
-                    <Link to={this.state.searchLink}>
+                    <Link className="btn btn-primary" to={this.state.searchLink}>
                       Search
                       </Link>
                 </button>
@@ -71,9 +71,9 @@ class DefaultContainer extends Component {
             <br />
 
             <div>
-            <button type="button" className="btn btn-primary"><Link to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link></button>
+            <Link className="btn btn-primary" to={`/restaurant/userOrders/${this.props.userId}`}>Orders History</Link>
                <br />
-               <button type="button" className="btn btn-primary"><Link to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link></button>
+               <Link className="btn btn-primary" to={`/restaurant/userReservations/${this.props.userId}`}>Reservations History</Link>
                <br />
 
               <div className="container" id="quick-search">

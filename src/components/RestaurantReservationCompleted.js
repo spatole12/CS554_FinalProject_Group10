@@ -44,7 +44,7 @@ class RestaurantReservationCompleted extends Component {
                 <div className="black-color">
                     <h1>Reservation Request Successful. Your request has been sent to the restaurant , the status of your reservation should update soon..</h1>
                     <p>Your reservation id is: {this.props.match.params.id}</p>
-                    <button type="button" className="btn btn-primary"><Link to={`/` }>Go to Home Page</Link></button>
+                    <Link className="btn btn-primary" to={`/` }>Go to Home Page</Link>
                 </div>
             );
         }

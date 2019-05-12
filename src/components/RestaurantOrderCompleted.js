@@ -48,7 +48,7 @@ class RestaurantOrderCompleted extends Component {
                     <h1>Order Completed. Thank you for your order.</h1>
                     <p>Your order id is: {this.props.match.params.id}</p>
                     <p>Total Amount: ${values.cost} </p>
-                    <button type="button" className="btn btn-primary"><Link to={`/` }>Go to Home Page</Link></button>
+                    <Link className="btn btn-primary" to={`/` }>Go to Home Page</Link>
                 </div>
             );
         }
