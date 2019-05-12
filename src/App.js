@@ -64,6 +64,13 @@ class App extends Component {
     });
   }
 
+  myCallback=(email)=>{
+    console.log(email);
+    this.setState({useremail:email});
+
+
+  }
+
 //change auth level to differentiate between a normal user and restaurant owner, also maintain user id (some kind of unique id) for each user
  
   render() {
@@ -95,7 +102,7 @@ class App extends Component {
               </div>
               
             </nav>
-            <Login onClose={this.showModal} show= {this.state.show} >
+            <Login onClose={this.showModal} show= {this.state.show} callbackFromParent={this.myCallback}>
                   This is a modal
                   </Login>
           </header>
