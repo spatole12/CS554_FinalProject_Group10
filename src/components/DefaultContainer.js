@@ -6,7 +6,8 @@ class DefaultContainer extends Component {
     super(props);
     this.state = {
       loading: false,
-      searchTerm: ""
+      searchTerm: "",
+      searchLink: "/restaurant/list/0"
     };
   }
 
@@ -25,6 +26,11 @@ class DefaultContainer extends Component {
 
   updateSearchTerm(e){
     this.setState({searchTerm: e.target.value});
+    if(this.state.searchTerm===""){
+      this.setState({searchLink: `/restaurant/list/0`});
+    } else {
+      this.setState({searchLink: `/restaurant/search/${this.state.searchTerm}`});
+    }
   }
 
   render() {
@@ -52,7 +58,7 @@ class DefaultContainer extends Component {
                     id="search-input" onChange={e => this.updateSearchTerm(e)}/>
                   <span className="input-group-btn">
                     <button type="submit" className="btn btn-lg btn-primary">
-                    <Link to={`/restaurant/search/${this.state.searchTerm}`}>
+                    <Link to={this.state.searchLink}>
                       Search
                       </Link>
                 </button>

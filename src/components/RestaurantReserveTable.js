@@ -91,9 +91,9 @@ class RestaurantReserveTable extends Component {
                     <h1>Book a Table</h1>
                     <h2>{restaurant_name}</h2>
                     
-                    <input type="date" ref="date"  min = {today}/>
+                    Date : <input type="date" ref="date"  min = {today}/>
 <br />
-      <select  ref="time" >
+Time : <select  ref="time" >
       <option value="--:--" selected="selected" disabled="disabled">--:--</option>
   <option value="10:00 AM">10:00 AM</option>
   <option value="10:30 AM">10:30 AM</option>
@@ -123,7 +123,7 @@ class RestaurantReserveTable extends Component {
 </select>
 
 <br />
-<input type="number" default="0" ref="guests" ></input>
+# of Guests : <input type="number" default="0" ref="guests" ></input>
 <br />
 <br />         
                     
