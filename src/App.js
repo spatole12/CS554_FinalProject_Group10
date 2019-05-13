@@ -24,7 +24,7 @@ class App extends Component {
 
   componentWillUpdate(nextProps,nextState){
     localStorage.setItem("email",JSON.stringify(nextState.useremail));
-    localStorage.setItem("userLevel",JSON.stringify(nextState.userLevel));
+    //localStorage.setItem("userLevel",JSON.stringify(nextState.userLevel));
 }
 
   componentWillMount(){
@@ -32,9 +32,9 @@ class App extends Component {
       useremail : JSON.parse(localStorage.getItem('email'))
     });
 
-    localStorage.getItem('userLevel') && this.setState({
+    /*localStorage.getItem('userLevel') && this.setState({
       userLevel : JSON.parse(localStorage.getItem('userLevel'))
-    })
+    })*/
   }
 
 
