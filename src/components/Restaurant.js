@@ -86,7 +86,7 @@ class Restaurant extends Component {
 
 
 for ( i = 0; i < this.state.data.reviews.length; i++) {
-  review = <li>{this.state.data.reviews[i].text}<b><span> - </span>{this.state.data.reviews[i].user.name}</b></li>
+  review = <li>{this.state.data.reviews[i].text}</li>
   displayReviews.push(review);
 }
          

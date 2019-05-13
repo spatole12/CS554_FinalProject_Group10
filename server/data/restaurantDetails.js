@@ -33,6 +33,12 @@ const exportedMethods = {
     if(newInsertInformation.insertedCount === 0) throw "Could not create a restaurant detail";
     const newId = newInsertInformation.insertedId;
     return await this.getRestaurantDetailsById(restaurantDetail.id);
+  },
+  async updateRestaurantDetails(restaurantReviews, id) {
+    const restaurantDetailsCollection = await restaurantDetails();
+
+    const newInsert = await restaurantDetailsCollection.updateOne({id:id}, {$set: {reviews: restaurantReviews}});
+    return await newInsert.modifiedCount;
   }
 };
 
