@@ -5,6 +5,7 @@ const ordersRoutes = require("./orders");
 const reservationRoutes = require("./reservations");
 const restaurantPopularRoutes = require("./restaurantPopular");
 const elasticSearchRoutes = require("./elasticSearch");
+const reviewsRoutes = require("./reviews");
 
 const constructorMethod = app => {
   app.use("/restaurants", restaurantsRoutes);
@@ -14,7 +15,8 @@ const constructorMethod = app => {
   app.use("/reservations", reservationRoutes);
   app.use("/restaurantPopular", restaurantPopularRoutes);
   app.use("/elasticSearch", elasticSearchRoutes);
-
+  app.use("/reviews", reviewsRoutes);
+  
   app.use("*", (req, res) => {
     res.status(404).json({ error: "Not found" });
   });

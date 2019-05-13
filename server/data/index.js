@@ -5,6 +5,9 @@ const restaurantDishesMapData = require("./restaurantDishesMap");
 const ordersData = require("./orders");
 const reservationsData = require("./reservations");
 const elasticSearchData = require("./elasticSearch");
+const reviewsData = require("./reviews");
+const restaurantReviewsMapData = require("./restaurantReviewsMap");
+
 
 module.exports = {
   restaurants: restaurantsData,
@@ -13,6 +16,8 @@ module.exports = {
   restaurantDishesMap: restaurantDishesMapData,
   orders: ordersData,
   reservations: reservationsData,
-  elasticSearch: elasticSearchData
+  elasticSearch: elasticSearchData,
+  reviews: reviewsData,
+  restaurantReviewsMapData: restaurantReviewsMapData
 };
 
